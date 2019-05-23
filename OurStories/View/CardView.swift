@@ -15,7 +15,6 @@ class CardView: UIView
             guard let imageName = story?.imageName else { return }
             imageView.image = UIImage(named: imageName)
             locationLabel.text = story?.location
-            contentTextField.text = story?.storyContent
         }
     }
     
