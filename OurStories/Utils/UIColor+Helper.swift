@@ -14,6 +14,7 @@ extension UIColor
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
     
+//    #F74252
     static let lightRed = rgb(red: 247, green: 66, blue: 82)
     
     static let tealColor = rgb(red: 48, green: 164, blue: 182)

@@ -38,4 +38,12 @@ extension UIView
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
+    
+    func alphaAnimation(){
+        alpha = 0.75
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 1.0
+        }
+    }
+
 }

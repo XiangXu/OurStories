@@ -28,22 +28,20 @@ class CardView: UIView
     let locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     let contentTextField: UITextView = {
         let tf = UITextView()
-        tf.textColor = .white
+        tf.isUserInteractionEnabled = false
         tf.font = UIFont.systemFont(ofSize: 14)
-        tf.backgroundColor = .lightRed
         return tf
     }()
     
     let contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightRed
+        view.backgroundColor = .white
         return view
     }()
     
@@ -51,8 +49,11 @@ class CardView: UIView
     {
         super.init(frame: frame)
         
-        layer.cornerRadius = 5.0
         clipsToBounds = true
+        layer.masksToBounds = true
+        layer.cornerRadius = 5.0
+        layer.borderColor = UIColor.gray.cgColor
+        layer.borderWidth = 1.5
         
         addSubview(imageView)
         imageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor,
@@ -68,7 +69,7 @@ class CardView: UIView
         contentView.addSubview(contentTextField)
         locationLabel.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: nil, right: contentView.rightAnchor,
                              paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
-                             width: 0, height: 30)
+                             width: 0, height: 48)
         contentTextField.anchor(top: locationLabel.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor,
                                 paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
                                 width: 0, height: 0)

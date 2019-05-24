@@ -11,23 +11,66 @@ import Koloda
 
 class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate
 {
+    let stories = Story.storyGenerate()
+    
     private var kolodaView: KolodaView = {
         let kolodaView = KolodaView()
         return kolodaView
     }()
     
-    let stories = [
-        Story(location: "爱尔兰-梅努斯", storyContent: "还记得多少年前第一次遇到你，也试过把你画在纸上用着水彩笔", imageName: "1.png"),
-        Story(location: "法国-巴黎", storyContent: "你那迷人的双眼 我至今无法忘记，想跟你在一起 哪怕花光所有积蓄", imageName: "2.png"),
-        Story(location: "英国-伦敦", storyContent: "当我长大了 烦恼变得更多了 每当遇到挫折 你陪我度过每一刻 ", imageName: "3.png")
-    ]
+    private lazy var previousImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "smile")
+        imageView.isUserInteractionEnabled = true
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hanldePreviousCard)))
+        return imageView
+    }()
+    
+    private lazy var nextImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "heart")
+        imageView.isUserInteractionEnabled = true
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hanldeNextCard)))
+        return imageView
+    }()
+    
+    private lazy var resetImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "vibe")
+        imageView.isUserInteractionEnabled = true
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleResetCard)))
+        return imageView
+    }()
+    
+    @objc func hanldePreviousCard()
+    {
+        previousImageView.alphaAnimation()
+        kolodaView.revertAction()
+    }
+    
+    @objc func hanldeNextCard()
+    {
+        nextImageView.alphaAnimation()
+        kolodaView.swipe(.right)
+    }
+    
+    @objc func handleResetCard()
+    {
+        resetImageView.alphaAnimation()
+        kolodaView.resetCurrentCardIndex()
+    }
     
     override func viewDidLoad() {
         
         self.view.backgroundColor = .white
         self.navigationItem.title = "我们的故事"
-        MusicHelper.sharedHelper.playBackgroundMusic()
-        
+//        MusicHelper.sharedHelper.playBackgroundMusic()
         setupKoloadView()
         
     }
@@ -42,6 +85,20 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                           paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
                           width: 300, height:500)
         kolodaView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+        let stackView = UIStackView(arrangedSubviews: [previousImageView, resetImageView, nextImageView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        stackView.spacing = 45
+        
+        view.addSubview(stackView)
+        
+        stackView.anchor(top: kolodaView.bottomAnchor, left: nil, bottom: nil, right: nil,
+                         paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
+                         width: 300, height: 70)
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int
@@ -53,11 +110,15 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     {
         let cardView = CardView()
         cardView.story = stories[index]
-       
+
         if index == 0{
             cardView.contentTextField.typeOn(string: stories[index].storyContent)
         }
         return cardView
+    }
+    
+    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        print("Did run out of cards")
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
