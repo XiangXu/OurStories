@@ -18,59 +18,82 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return kolodaView
     }()
     
-    private lazy var previousImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "smile")
-        imageView.isUserInteractionEnabled = true
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hanldePreviousCard)))
-        return imageView
+    let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "smile")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 35
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderWidth = 1.5
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(hanldePreviousCard), for: .touchUpInside)
+        return button
     }()
     
-    private lazy var nextImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "heart")
-        imageView.isUserInteractionEnabled = true
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hanldeNextCard)))
-        return imageView
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 35
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderWidth = 1.5
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(hanldeNextCard), for: .touchUpInside)
+        return button
     }()
     
-    private lazy var resetImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "vibe")
-        imageView.isUserInteractionEnabled = true
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleResetCard)))
-        return imageView
+    let resettButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "vibe")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 35
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderWidth = 1.5
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleResetCard), for: .touchUpInside)
+        return button
     }()
     
     @objc func hanldePreviousCard()
     {
-        previousImageView.alphaAnimation()
         kolodaView.revertAction()
     }
     
     @objc func hanldeNextCard()
     {
-        nextImageView.alphaAnimation()
         kolodaView.swipe(.right)
     }
     
     @objc func handleResetCard()
     {
-        resetImageView.alphaAnimation()
         kolodaView.resetCurrentCardIndex()
+    }
+    
+    @objc func handleSelectMap()
+    {
+        let mapViewController = MapViewController()
+        navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     override func viewDidLoad() {
         
         self.view.backgroundColor = .white
         self.navigationItem.title = "我们的故事"
-//        MusicHelper.sharedHelper.playBackgroundMusic()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "earth")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSelectMap))
+        
+        MusicHelper.sharedHelper.playBackgroundMusic()
         setupKoloadView()
         
     }
@@ -81,13 +104,13 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         kolodaView.delegate = self
         
         view.addSubview(kolodaView)
-        kolodaView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil,
-                          paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
-                          width: 300, height:500)
+        kolodaView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor,
+                          paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8,
+                          width: 0, height:500)
         kolodaView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         
-        let stackView = UIStackView(arrangedSubviews: [previousImageView, resetImageView, nextImageView])
+        let stackView = UIStackView(arrangedSubviews: [previousButton, resettButton, nextButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
@@ -110,7 +133,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     {
         let cardView = CardView()
         cardView.story = stories[index]
-
+        
         if index == 0{
             cardView.contentTextField.typeOn(string: stories[index].storyContent)
         }
@@ -121,9 +144,10 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         print("Did run out of cards")
     }
     
-    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
-        if index + 1 < stories.count{
-            let cardView = koloda.viewForCard(at: index+1) as! CardView
+    func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
+        if index != 0{
+            let cardView = koloda.viewForCard(at: index) as! CardView
+            cardView.contentTextField.resetTypeOn()
             cardView.contentTextField.typeOn(string: stories[index].storyContent)
         }
     }

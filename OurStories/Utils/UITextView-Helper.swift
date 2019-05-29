@@ -8,25 +8,40 @@
 
 import UIKit
 
-extension UITextView {
+class TypeOnTextView: UITextView {
+    
+    fileprivate var typeTimer: Timer? = nil
+    
+    func resetTypeOn()
+    {
+        self.typeTimer?.invalidate()
+        self.text = ""
+        self.typeTimer = nil
+    }
+    
     func typeOn(string: String) {
         let characterArray = string.characterArray
         var characterIndex = 0
-        Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true) { (timer) in
-            if characterArray[characterIndex] != "$" {
-                while characterArray[characterIndex] == " " {
-                    self.text.append(" ")
-                    characterIndex += 1
-                    if characterIndex == characterArray.count {
-                        timer.invalidate()
-                        return
+        if typeTimer == nil
+        {
+            typeTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true) { (timmer) in
+                if characterArray[characterIndex] != "$" {
+                    while characterArray[characterIndex] == " " {
+                        self.text.append(" ")
+                        characterIndex += 1
+                        if characterIndex == characterArray.count {
+                            self.typeTimer?.invalidate()
+                            self.typeTimer = nil
+                            return
+                        }
                     }
+                    self.text.append(characterArray[characterIndex])
                 }
-                self.text.append(characterArray[characterIndex])
-            }
-            characterIndex += 1
-            if characterIndex == characterArray.count {
-                timer.invalidate()
+                characterIndex += 1
+                if characterIndex == characterArray.count {
+                    self.typeTimer?.invalidate()
+                     self.typeTimer = nil
+                }
             }
         }
     }

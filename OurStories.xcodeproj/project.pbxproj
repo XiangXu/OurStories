@@ -16,6 +16,7 @@
 		DB10366522970A0C00F9CE37 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB10366422970A0C00F9CE37 /* CardView.swift */; };
 		DB1036672297514900F9CE37 /* UITextView-Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1036662297514900F9CE37 /* UITextView-Helper.swift */; };
 		DB1036692297517A00F9CE37 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1036682297517A00F9CE37 /* String+Helper.swift */; };
+		DB26E8D9229F20C80093A2F0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E8D8229F20C80093A2F0 /* MapViewController.swift */; };
 		DB97D351229492250036DCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D350229492250036DCFB /* AppDelegate.swift */; };
 		DB97D358229492270036DCFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB97D357229492270036DCFB /* Assets.xcassets */; };
 		DB97D35B229492270036DCFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB97D359229492270036DCFB /* LaunchScreen.storyboard */; };
@@ -61,6 +62,7 @@
 		DB10366422970A0C00F9CE37 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DB1036662297514900F9CE37 /* UITextView-Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView-Helper.swift"; sourceTree = "<group>"; };
 		DB1036682297517A00F9CE37 /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
+		DB26E8D8229F20C80093A2F0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DB97D34D229492250036DCFB /* OurStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB97D350229492250036DCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB97D357229492270036DCFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				DB97D37F2294938B0036DCFB /* MainViewController.swift */,
+				DB26E8D8229F20C80093A2F0 /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				DB10366022960E8400F9CE37 /* UIColor+Helper.swift in Sources */,
 				DB97D351229492250036DCFB /* AppDelegate.swift in Sources */,
 				DB103662229610B100F9CE37 /* UINavigationController+Helper.swift in Sources */,
+				DB26E8D9229F20C80093A2F0 /* MapViewController.swift in Sources */,
 				DB97D3802294938B0036DCFB /* MainViewController.swift in Sources */,
 				DBD47B872294AD58003E70AC /* StoryHelper.swift in Sources */,
 				DB10365E2296068F00F9CE37 /* UIView+Helper.swift in Sources */,

@@ -20,7 +20,7 @@ class CardView: UIView
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -32,8 +32,8 @@ class CardView: UIView
         return label
     }()
     
-    let contentTextField: UITextView = {
-        let tf = UITextView()
+    let contentTextField: TypeOnTextView = {
+        let tf = TypeOnTextView()
         tf.isUserInteractionEnabled = false
         tf.font = UIFont.systemFont(ofSize: 14)
         return tf
