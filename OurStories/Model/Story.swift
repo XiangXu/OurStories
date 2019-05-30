@@ -36,6 +36,11 @@ struct Story
                   imageName: "1.png",
                   coordinate: CLLocationCoordinate2D(latitude: 53.349804, longitude: -6.260310)),
            
+            Story(location: "中国-江汉油田",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "1.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 30.404983, longitude: 112.894037)),
+            
             Story(location: "中国-武汉",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
@@ -55,6 +60,11 @@ struct Story
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
                   coordinate: CLLocationCoordinate2D(latitude: 52.339230, longitude: -6.460040)),
+            
+            Story(location: "爱尔兰-沃特福德",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "2.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 52.259319, longitude: -7.110070)),
             
             Story(location: "西班牙-巴塞罗那",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测段落测试段落测试段落测试段落",
@@ -99,7 +109,7 @@ struct Story
             Story(location: "德国-科隆",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 50.937531, longitude: 50.937531)),
+                  coordinate: CLLocationCoordinate2D(latitude: 50.937531, longitude: 6.960279)),
          
             Story(location: "奥地利-萨尔茨堡",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
@@ -124,7 +134,7 @@ struct Story
             Story(location: "德国-天鹅堡",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "3.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 35.473221, longitude: -96.382080)),
+                  coordinate: CLLocationCoordinate2D(latitude: 47.576431, longitude: 10.732980)),
             
             Story(location: "德国-慕尼黑",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
@@ -154,7 +164,7 @@ struct Story
             Story(location: "意大利-米兰",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 48.810719, longitude: 14.315020)),
+                  coordinate: CLLocationCoordinate2D(latitude: 45.464203, longitude: 9.189982)),
             
             Story(location: "意大利-比萨",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
@@ -184,7 +194,7 @@ struct Story
             Story(location: "意大利-罗马",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 36.076637, longitude: -95.903633)),
+                  coordinate: CLLocationCoordinate2D(latitude: 41.902782, longitude: 12.496365)),
             
             Story(location: "梵蒂冈",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
@@ -195,6 +205,11 @@ struct Story
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
                   coordinate: CLLocationCoordinate2D(latitude: 48.148598, longitude: 17.107748)),
+            
+            Story(location: "荷兰-埃因霍温",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "1.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 51.441643, longitude: 5.469722)),
             
             Story(location: "比利时-安特卫普",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",

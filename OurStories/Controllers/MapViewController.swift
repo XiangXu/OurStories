@@ -10,10 +10,11 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
-{    
+{
+    let stories = Story.storyGenerate()
+    
     lazy var mapView: MKMapView = {
         let mapView = MKMapView()
-        mapView.mapType = .hybrid
         mapView.delegate = self
         mapView.showsCompass = false
         mapView.showsScale = false
@@ -33,6 +34,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,
                        paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
                        width: 0, height: 0)
+        setupAnnotation()
     }
     
+    private func setupAnnotation()
+    {
+        for story in stories {
+            mapView.addAnnotation(VisitPlace(title: story.location, coordinate: story.coordinate))
+        }
+    }
 }
