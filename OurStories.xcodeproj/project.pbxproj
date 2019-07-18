@@ -28,7 +28,6 @@
 		DB97D386229494FE0036DCFB /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D385229494FE0036DCFB /* MusicHelper.swift */; };
 		DB97D3882294967D0036DCFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB97D3872294967D0036DCFB /* Main.storyboard */; };
 		DBD47B7C22949FF5003E70AC /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD47B7B22949FF5003E70AC /* Story.swift */; };
-		DBD47B872294AD58003E70AC /* StoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD47B862294AD58003E70AC /* StoryHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +80,6 @@
 		DB97D385229494FE0036DCFB /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		DB97D3872294967D0036DCFB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DBD47B7B22949FF5003E70AC /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		DBD47B862294AD58003E70AC /* StoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryHelper.swift; sourceTree = "<group>"; };
 		FDA573F91AFE0F851417F197 /* Pods_OurStoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurStoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -222,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				DB97D385229494FE0036DCFB /* MusicHelper.swift */,
-				DBD47B862294AD58003E70AC /* StoryHelper.swift */,
 				DB10365D2296068F00F9CE37 /* UIView+Helper.swift */,
 				DB10365F22960E8400F9CE37 /* UIColor+Helper.swift */,
 				DB103661229610B100F9CE37 /* UINavigationController+Helper.swift */,
@@ -467,7 +464,6 @@
 				DB103662229610B100F9CE37 /* UINavigationController+Helper.swift in Sources */,
 				DB26E8D9229F20C80093A2F0 /* MapViewController.swift in Sources */,
 				DB97D3802294938B0036DCFB /* MainViewController.swift in Sources */,
-				DBD47B872294AD58003E70AC /* StoryHelper.swift in Sources */,
 				DB10365E2296068F00F9CE37 /* UIView+Helper.swift in Sources */,
 				DB6BBE1022A071CB00ED10E1 /* VisitPlace.swift in Sources */,
 				DBD47B7C22949FF5003E70AC /* Story.swift in Sources */,

@@ -68,11 +68,6 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return button
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        kolodaView.resetCurrentCardIndex();
-    }
-    
     @objc func hanldePreviousCard()
     {
         kolodaView.revertAction()
@@ -100,7 +95,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         self.navigationItem.title = "我们的故事"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "earth")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSelectMap))
         
-        MusicHelper.sharedHelper.playBackgroundMusic()
+//        MusicHelper.sharedHelper.playBackgroundMusic()
         setupKoloadView()
         
     }
@@ -172,7 +167,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setSubject("我的答案")
+            mail.setSubject("I say yes!")
             mail.setToRecipients(["xuxiang1990619@gmail.com"])
             mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
             
