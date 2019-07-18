@@ -8,8 +8,10 @@
 
 import UIKit
 import Koloda
+import PopupDialog
+import MessageUI
 
-class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate
+class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, MFMailComposeViewControllerDelegate
 {
     let stories = Story.storyGenerate()
     
@@ -66,6 +68,11 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return button
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        kolodaView.resetCurrentCardIndex();
+    }
+    
     @objc func hanldePreviousCard()
     {
         kolodaView.revertAction()
@@ -93,7 +100,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         self.navigationItem.title = "我们的故事"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "earth")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSelectMap))
         
-//        MusicHelper.sharedHelper.playBackgroundMusic()
+        MusicHelper.sharedHelper.playBackgroundMusic()
         setupKoloadView()
         
     }
@@ -141,7 +148,16 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-        print("Did run out of cards")
+        let title = "测试段落？"
+        let message = "测试段落测试段落测试段落测试段落测试段落测试段落"
+        let image = UIImage(named: "heart")
+        let popup = PopupDialog(title: title, message: message, image: image)
+        let yesButton = DefaultButton(title: "I say yes", dismissOnTap: true) {
+            self.sendEmail()
+            self.kolodaView.resetCurrentCardIndex()
+        }
+        popup.addButtons([yesButton])
+        self.present(popup, animated: true, completion: nil)
     }
     
     func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
@@ -150,5 +166,24 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
             cardView.contentTextField.resetTypeOn()
             cardView.contentTextField.typeOn(string: stories[index].storyContent)
         }
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setSubject("我的答案")
+            mail.setToRecipients(["xuxiang1990619@gmail.com"])
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            print("Cannot send email")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+         kolodaView.resetCurrentCardIndex()
     }
 }

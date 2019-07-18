@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "774D61A1726235D3D681DF56B530BB9D"
-               BuildableName = "Pods_OurStories.framework"
-               BlueprintName = "Pods-OurStories"
+               BlueprintIdentifier = "9AD6E417B292CCB529632F0FA6F2EFEC"
+               BuildableName = "DynamicBlurView.framework"
+               BlueprintName = "DynamicBlurView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "774D61A1726235D3D681DF56B530BB9D"
-            BuildableName = "Pods_OurStories.framework"
-            BlueprintName = "Pods-OurStories"
+            BlueprintIdentifier = "9AD6E417B292CCB529632F0FA6F2EFEC"
+            BuildableName = "DynamicBlurView.framework"
+            BlueprintName = "DynamicBlurView"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
