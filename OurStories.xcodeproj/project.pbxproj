@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		009D7F83D73AAD82063EEEE6 /* Pods_OurStoriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA573F91AFE0F851417F197 /* Pods_OurStoriesTests.framework */; };
 		80621D19D931E4647E9A983B /* Pods_OurStoriesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C12C37DE46E9678092EA4D /* Pods_OurStoriesUITests.framework */; };
-		C04B3E3FB60795D148246649 /* Pods_OurStories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DACEA01062B1BC9B66ADC54 /* Pods_OurStories.framework */; };
 		DB10365E2296068F00F9CE37 /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB10365D2296068F00F9CE37 /* UIView+Helper.swift */; };
 		DB10366022960E8400F9CE37 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB10365F22960E8400F9CE37 /* UIColor+Helper.swift */; };
 		DB103662229610B100F9CE37 /* UINavigationController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB103661229610B100F9CE37 /* UINavigationController+Helper.swift */; };
@@ -27,6 +26,7 @@
 		DB97D383229494450036DCFB /* firstmeet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB97D382229494450036DCFB /* firstmeet.mp3 */; };
 		DB97D386229494FE0036DCFB /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D385229494FE0036DCFB /* MusicHelper.swift */; };
 		DB97D3882294967D0036DCFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB97D3872294967D0036DCFB /* Main.storyboard */; };
+		DBBFC6252432870500CB19BD /* Pods_OurStories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DACEA01062B1BC9B66ADC54 /* Pods_OurStories.framework */; };
 		DBD47B7C22949FF5003E70AC /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD47B7B22949FF5003E70AC /* Story.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +79,7 @@
 		DB97D382229494450036DCFB /* firstmeet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firstmeet.mp3; sourceTree = "<group>"; };
 		DB97D385229494FE0036DCFB /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		DB97D3872294967D0036DCFB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DBBFC6282432878B00CB19BD /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD47B7B22949FF5003E70AC /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		FDA573F91AFE0F851417F197 /* Pods_OurStoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurStoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C04B3E3FB60795D148246649 /* Pods_OurStories.framework in Frameworks */,
+				DBBFC6252432870500CB19BD /* Pods_OurStories.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +115,7 @@
 		25CDFC1B688D7E32E6A65C10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBBFC6282432878B00CB19BD /* DynamicBlurView.framework */,
 				0DACEA01062B1BC9B66ADC54 /* Pods_OurStories.framework */,
 				FDA573F91AFE0F851417F197 /* Pods_OurStoriesTests.framework */,
 				97C12C37DE46E9678092EA4D /* Pods_OurStoriesUITests.framework */,
@@ -411,23 +413,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OurStories/Pods-OurStories-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OurStories/Pods-OurStories-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OurStories/Pods-OurStories-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurStories/Pods-OurStories-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OurStories/Pods-OurStories-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		927761F1D7BF85663CB59495 /* [CP] Check Pods Manifest.lock */ = {
@@ -635,8 +630,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TPTP64N8VK;
+				DEVELOPMENT_TEAM = 48MHFE47NE;
 				INFOPLIST_FILE = OurStories/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -654,8 +650,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TPTP64N8VK;
+				DEVELOPMENT_TEAM = 48MHFE47NE;
 				INFOPLIST_FILE = OurStories/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

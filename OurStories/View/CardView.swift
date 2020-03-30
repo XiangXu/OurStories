@@ -28,6 +28,7 @@ class CardView: UIView
     let locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
@@ -35,6 +36,8 @@ class CardView: UIView
     let contentTextField: TypeOnTextView = {
         let tf = TypeOnTextView()
         tf.isUserInteractionEnabled = false
+        tf.backgroundColor = .white
+        tf.textColor = .black
         tf.font = UIFont.systemFont(ofSize: 14)
         return tf
     }()

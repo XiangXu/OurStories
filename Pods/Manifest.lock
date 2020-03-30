@@ -1,28 +1,28 @@
 PODS:
-  - DynamicBlurView (3.0.1)
+  - DynamicBlurView (4.0.0)
   - Koloda (5.0):
     - pop (~> 1.0)
   - pop (1.0.12)
-  - PopupDialog (1.1.0):
-    - DynamicBlurView (~> 3.0.1)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
 
 DEPENDENCIES:
   - Koloda
   - PopupDialog (~> 1.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - DynamicBlurView
     - Koloda
     - pop
     - PopupDialog
 
 SPEC CHECKSUMS:
-  DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
+  DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   Koloda: 75302d21882cc3e274c1561b1155805ea5919dab
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
-  PopupDialog: 42fb7a0bc4fafdf89fef8b5b2b127a6023f3e1cc
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
 
 PODFILE CHECKSUM: 1a549ba5eb689003a34834dfd5f1a66be00d48fb
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.1

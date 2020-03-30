@@ -72,7 +72,7 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 52.259319, longitude: -7.110070)),
             
             Story(location: "爱尔兰-科克",
-                  storyContent: "2014年4月 我们第一次爱尔兰旅行的最后一站 科克 我们去了大学 去了动物园 去了主街逛街 很小的一个城市 生活也很慢...",
+                  storyContent: "2014年4月 我们第一次爱尔兰旅行的最后一站 科克 我们去了科克大学 去了动物园 去了主街逛街 很小的一个城市 生活也很慢...",
                   imageName: "10.png",
                   coordinate: CLLocationCoordinate2D(latitude: 51.896893, longitude: -8.486316)),
             
