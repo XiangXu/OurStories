@@ -36,8 +36,8 @@ class CardView: UIView
     let contentTextField: TypeOnTextView = {
         let tf = TypeOnTextView()
         tf.isUserInteractionEnabled = false
-        tf.backgroundColor = .white
         tf.textColor = .black
+        tf.backgroundColor = .white
         tf.font = UIFont.systemFont(ofSize: 14)
         return tf
     }()
