@@ -76,15 +76,19 @@ struct Story
                   imageName: "10.png",
                   coordinate: CLLocationCoordinate2D(latitude: 51.896893, longitude: -8.486316)),
             
-
             Story(location: "法国-巴黎",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "2.png",
+                  storyContent: "2014年4月 巴黎-浪漫之都 我们去了巴黎圣母院 散步过香榭丽舍大街 逛了罗浮宫 凯旋门 登上了埃菲尔铁塔  还记得我们超级幸运的登上了晚上最后一班的游船 夜游塞纳河 在爱桥上一起锁上了我们的名字...",
+                  imageName: "11.png",
                   coordinate: CLLocationCoordinate2D(latitude: 48.856613, longitude: 2.352222)),
+            
+            Story(location: "英国-伦敦",
+                  storyContent: "2014年9月 我第一份实习工作期间我们第一次到伦敦 我们徒步去了大本钟 塔桥 大英博物馆 坐了伦敦眼...",
+                  imageName: "12.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 51.507351, longitude: -0.127758)),
 
             Story(location: "英国-伦敦",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段段落测试测试段落",
-                  imageName: "3.png",
+                  storyContent: "2014年12月 实习结束 圣诞节 我们再一次去了伦敦 我们住在市中心 吃了Burger & Lobster 去了购物村和伦敦海德公园旁的圣诞集市 记得那几天冷冷的一直飘着小雨 当然还有印象最深的我们去超市买水 你少付了钱却和人说不用找了的囧事...",
+                  imageName: "13.png",
                   coordinate: CLLocationCoordinate2D(latitude: 51.507351, longitude: -0.127758)),
 
             Story(location: "爱尔兰-高威",
