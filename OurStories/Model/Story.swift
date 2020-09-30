@@ -275,7 +275,21 @@ struct Story
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "3.png",
                   coordinate: CLLocationCoordinate2D(latitude: 46.6885, longitude: 7.6792)),
-
+            
+            Story(location: "爱尔兰-高威",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "3.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 53.270668, longitude: -9.056790)),
+            
+            Story(location: "爱尔兰-凯尔莫尔修道院",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "3.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 53.5616, longitude: 9.8893)),
+            
+            Story(location: "爱尔兰-阿黛尔小镇",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "3.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 52.5636, longitude: 8.7926)),
         ]
     }
 }

@@ -95,7 +95,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         self.navigationItem.title = "我们的故事"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "earth")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSelectMap))
         
-//        MusicHelper.sharedHelper.playBackgroundMusic()
+        MusicHelper.sharedHelper.playBackgroundMusic()
         setupKoloadView()
         
     }
