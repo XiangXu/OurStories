@@ -23,11 +23,11 @@
 		DB97D366229492280036DCFB /* OurStoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D365229492280036DCFB /* OurStoriesTests.swift */; };
 		DB97D371229492280036DCFB /* OurStoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D370229492280036DCFB /* OurStoriesUITests.swift */; };
 		DB97D3802294938B0036DCFB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D37F2294938B0036DCFB /* MainViewController.swift */; };
-		DB97D383229494450036DCFB /* firstmeet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB97D382229494450036DCFB /* firstmeet.mp3 */; };
 		DB97D386229494FE0036DCFB /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D385229494FE0036DCFB /* MusicHelper.swift */; };
 		DB97D3882294967D0036DCFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB97D3872294967D0036DCFB /* Main.storyboard */; };
 		DBBFC6252432870500CB19BD /* Pods_OurStories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DACEA01062B1BC9B66ADC54 /* Pods_OurStories.framework */; };
 		DBD47B7C22949FF5003E70AC /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD47B7B22949FF5003E70AC /* Story.swift */; };
+		DBFF91D0254608C4007DDBBE /* jay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFF91CF254608C4007DDBBE /* jay.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,11 +76,11 @@
 		DB97D370229492280036DCFB /* OurStoriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurStoriesUITests.swift; sourceTree = "<group>"; };
 		DB97D372229492280036DCFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB97D37F2294938B0036DCFB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		DB97D382229494450036DCFB /* firstmeet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firstmeet.mp3; sourceTree = "<group>"; };
 		DB97D385229494FE0036DCFB /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		DB97D3872294967D0036DCFB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DBBFC6282432878B00CB19BD /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD47B7B22949FF5003E70AC /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		DBFF91CF254608C4007DDBBE /* jay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jay.mp3; sourceTree = "<group>"; };
 		FDA573F91AFE0F851417F197 /* Pods_OurStoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurStoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -213,7 +213,7 @@
 		DB97D381229494370036DCFB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DB97D382229494450036DCFB /* firstmeet.mp3 */,
+				DBFF91CF254608C4007DDBBE /* jay.mp3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -349,8 +349,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB97D35B229492270036DCFB /* LaunchScreen.storyboard in Resources */,
+				DBFF91D0254608C4007DDBBE /* jay.mp3 in Resources */,
 				DB97D358229492270036DCFB /* Assets.xcassets in Resources */,
-				DB97D383229494450036DCFB /* firstmeet.mp3 in Resources */,
 				DB97D3882294967D0036DCFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

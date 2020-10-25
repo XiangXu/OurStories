@@ -13,9 +13,11 @@ class MusicHelper {
     var audioPlayer: AVAudioPlayer?
     
     func playBackgroundMusic() {
-        if let bundle = Bundle.main.path(forResource: "firstmeet", ofType: "mp3"){
+        if let bundle = Bundle.main.path(forResource: "jay", ofType: "mp3"){
             let backgroundMusic = NSURL(fileURLWithPath: bundle)
             do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
                 audioPlayer = try AVAudioPlayer(contentsOf:backgroundMusic as URL)
                 guard let audioPlayer = audioPlayer else { return }
                 audioPlayer.numberOfLoops = -1
