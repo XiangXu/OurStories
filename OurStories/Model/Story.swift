@@ -32,7 +32,7 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 53.381210, longitude: -6.592220)),
         
             Story(location: "爱尔兰-都柏林",
-                  storyContent: "2012年8月 记得第一次来这里是你带着我 去之前你信誓旦旦的说你已经很熟悉了 可以带我到处逛逛 到了以后却“意外”的迷路了 记得我们吃了中餐 第一次让你试了鱼香肉丝 也看了地标的大柱子 很充实开心的一天... ",
+                  storyContent: "2012年8月 记得第一次来这里是你带着我 去之前你信誓旦旦的说你已经很熟悉了 可以带我到处逛逛 到了以后却“意外”的迷路了 记得我们吃了中餐 第一次让你试了鱼香肉丝 也看了地标的大柱子 很充实开心的一天...",
                   imageName: "2.png",
                   coordinate: CLLocationCoordinate2D(latitude: 53.349804, longitude: -6.260310)),
             
@@ -42,7 +42,7 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 41.385063, longitude: 2.173404)),
 
             Story(location: "西班牙-马德里",
-                  storyContent: "2013年3月 西班牙第二站 马德里 傍晚飞机到达 大雨 你坚持要导航带我去吃一家自助 走了好久你才发现走反了 很不好意思的把导航给我 不记得去了哪些景点 只记得那场大雨和巧克力油条的搭配... ",
+                  storyContent: "2013年3月 西班牙第二站 马德里 傍晚飞机到达 大雨 你坚持要导航带我去吃一家自助 走了好久你才发现走反了 很不好意思的把导航给我 不记得去了哪些景点 只记得那场大雨和巧克力油条的搭配...",
                   imageName: "4.png",
                   coordinate: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790)),
             
@@ -77,34 +77,39 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 51.896893, longitude: -8.486316)),
             
             Story(location: "法国-巴黎",
-                  storyContent: "2014年4月 巴黎-浪漫之都 我们去了巴黎圣母院 散步过香榭丽舍大街 逛了罗浮宫 凯旋门 登上了埃菲尔铁塔  还记得我们超级幸运的登上了晚上最后一班的游船 夜游塞纳河 在爱桥上一起锁上了我们的名字...",
+                  storyContent: "2014年4月 巴黎-浪漫之都 我们去了巴黎圣母院 散步过香榭丽舍大街 逛了罗浮宫 凯旋门 登上了埃菲尔铁塔 还记得我们超级幸运的登上了晚上最后一班的游船 夜游塞纳河 在爱桥上一起锁上了我们的名字...",
                   imageName: "11.png",
                   coordinate: CLLocationCoordinate2D(latitude: 48.856613, longitude: 2.352222)),
             
             Story(location: "英国-伦敦",
-                  storyContent: "2014年9月 我第一份实习工作期间我们第一次到伦敦 我们徒步去了大本钟 塔桥 大英博物馆 坐了伦敦眼...",
+                  storyContent: "2014年9月 我第一份实习工作期间我们第一次到伦敦 我们徒步去了大本钟 塔桥 大英博物馆 坐了伦敦眼摩天轮...",
                   imageName: "12.png",
                   coordinate: CLLocationCoordinate2D(latitude: 51.507351, longitude: -0.127758)),
+            
+            Story(location: "爱尔兰-高威-断崖",
+                  storyContent: "2014年10月 这天我们起了大早 因为你报了去高威的一天游的团 早早的坐公交车来到了都柏林 在大柱子旁边的麦当劳吃了早餐 断崖很美也很壮观 那天的天气也很棒 我们傍晚才回到都柏林 那时还下起了小雨...",
+                  imageName: "13.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 52.9715, longitude: -9.4309)),
 
             Story(location: "英国-伦敦",
                   storyContent: "2014年12月 实习结束 圣诞节 我们再一次去了伦敦 我们住在市中心 吃了Burger & Lobster 去了购物村和伦敦海德公园旁的圣诞集市 记得那几天冷冷的一直飘着小雨 当然还有印象最深的我们去超市买水 你少付了钱却和人说不用找了的囧事...",
-                  imageName: "13.png",
+                  imageName: "14.png",
                   coordinate: CLLocationCoordinate2D(latitude: 51.507351, longitude: -0.127758)),
 
-            Story(location: "爱尔兰-高威",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "3.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 53.270668, longitude: -9.056790)),
-
             Story(location: "中国-香港",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "3.png",
+                  storyContent: "2015年5月 我们到了香港 这是我第一次到香港 说实话不太喜欢这样的城市 太压抑 感觉每个人的节奏都好快 不过维多利亚港的夜景真的很美...",
+                  imageName: "15.png",
                   coordinate: CLLocationCoordinate2D(latitude: 22.396427, longitude: 114.109497)),
 
             Story(location: "中国-成都",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "3.png",
+                  storyContent: "2015年8月 成都 还记得去之前的小插曲 我买的动车票结果由于洪水停运了 不得已前一天晚上买了头等舱飞去的成都 结果害的你在机场等了我几个小时 万幸之后的一切都很开心和顺利 瞿鹏和婷姐带着我们吃吃喝喝 我们去了锦里 逛了很多有特色的地方 还记得住的酒店旁边的火锅真的挺好吃的 就是越煮越辣...",
+                  imageName: "16.png",
                   coordinate: CLLocationCoordinate2D(latitude: 30.572815, longitude: 104.066803)),
+            
+            Story(location: "中国-九寨沟",
+                  storyContent: "2015年8月 从成都我们抱团去了九寨沟 其实去之前我还是有些忐忑的 感觉去得路上会不会有些危险 不过现在想想还好当时你坚持要去 景色真的是美不胜收 一路上也遇见了很多美景和有趣的事情 黄龙和九寨沟的景色真的是太值得了 还有一件记忆犹新的事情是我们路过了汶川 重建后的汶川挺让人感慨的...",
+                  imageName: "17.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 33.2600, longitude: 103.9186)),
 
             Story(location: "荷兰-阿姆斯特丹",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
