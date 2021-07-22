@@ -102,7 +102,7 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 22.396427, longitude: 114.109497)),
 
             Story(location: "中国-成都",
-                  storyContent: "2015年8月 成都 还记得去之前的小插曲 我买的动车票结果由于洪水停运了 不得已前一天晚上买了头等舱飞去的成都 结果害的你在机场等了我几个小时 万幸之后的一切都很开心和顺利 瞿鹏和婷姐带着我们吃吃喝喝 我们去了锦里 逛了很多有特色的地方 还记得住的酒店旁边的火锅真的挺好吃的 就是越煮越辣...",
+                  storyContent: "2015年8月 成都 还记得去之前的小插曲 我买的动车票结果由于洪水停运了 不得已前一天晚上买了头等舱飞去的成都 结果害的你在机场等了我几个小时 万幸之后的一切都很开心和顺利 瞿鹏和婷姐带着我们吃吃喝喝 我们去了锦里 逛了很多有特色的地方 还记得住的酒店旁边的火锅真的挺好吃的...",
                   imageName: "16.png",
                   coordinate: CLLocationCoordinate2D(latitude: 30.572815, longitude: 104.066803)),
             
@@ -112,13 +112,13 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 33.2600, longitude: 103.9186)),
 
             Story(location: "荷兰-阿姆斯特丹",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "1.png",
+                  storyContent: "2015年12月 我们飞到了阿姆斯特丹 这是一个充满着大麻味道的城市 印象最深刻的是一出机场到处都能看到 I amsterdam的标语 我们逛了博物馆 看了梵高 吃了中餐 去了周围的羊角村和风车村 当然我们还去了红灯区旁边的中国街的那家寺庙 现在想想我们还没还愿...",
+                  imageName: "18.png",
                   coordinate: CLLocationCoordinate2D(latitude: 52.370216, longitude: 4.895168)),
 
             Story(location: "德国-科隆",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "1.png",
+                  storyContent: "2015年12月 我们坐火车从阿姆斯特丹到科隆一日游 其实就是为了看一下科隆大教堂 一出火车站就能看到它 我觉得壮观程度丝毫不亚于圣家堂教堂 我们花了好久从狭小的小道一路爬到了教堂顶 从上面可以俯瞰整个科隆市区 我们晚餐去了教堂旁边的一家餐厅 还记得教堂旁边的圣诞集市的烤肉很好吃...",
+                  imageName: "19.png",
                   coordinate: CLLocationCoordinate2D(latitude: 50.937531, longitude: 6.960279)),
 
             Story(location: "奥地利-萨尔茨堡",
@@ -175,6 +175,11 @@ struct Story
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "1.png",
                   coordinate: CLLocationCoordinate2D(latitude: 45.464203, longitude: 9.189982)),
+            
+            Story(location: "意大利-五渔村",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "1.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 44.1461, longitude: 9.6439)),
 
             Story(location: "意大利-比萨",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
@@ -289,12 +294,22 @@ struct Story
             Story(location: "爱尔兰-凯尔莫尔修道院",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "3.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 53.5616, longitude: 9.8893)),
+                  coordinate: CLLocationCoordinate2D(latitude: 53.5616, longitude: -9.8893)),
             
             Story(location: "爱尔兰-阿黛尔小镇",
                   storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
                   imageName: "3.png",
-                  coordinate: CLLocationCoordinate2D(latitude: 52.5636, longitude: 8.7926)),
+                  coordinate: CLLocationCoordinate2D(latitude: 52.564017, longitude: -8.791179)),
+            
+            Story(location: "爱尔兰-利莫瑞克",
+                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
+                  imageName: "3.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 52.6638, longitude: 8.6267)),
+            
+            Story(location: "爱尔兰-都柏林-Rotunda Hospital",
+                  storyContent: "2021年7月7日 这一天我们牛牛出生啦 ",
+                  imageName: "2.png",
+                  coordinate: CLLocationCoordinate2D(latitude: 53.3531, longitude: 53.3531)),
         ]
     }
 }
