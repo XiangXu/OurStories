@@ -172,9 +172,9 @@
 				DB103663229709CF00F9CE37 /* View */,
 				DBD47B7A22949FDE003E70AC /* Model */,
 				DB97D384229494EC0036DCFB /* Utils */,
-				DB97D381229494370036DCFB /* Resources */,
 				DB97D37E229493730036DCFB /* Controllers */,
 				DB97D350229492250036DCFB /* AppDelegate.swift */,
+				DB97D381229494370036DCFB /* Resources */,
 				DB97D357229492270036DCFB /* Assets.xcassets */,
 				DB97D3872294967D0036DCFB /* Main.storyboard */,
 				DB97D359229492270036DCFB /* LaunchScreen.storyboard */,
@@ -632,14 +632,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48MHFE47NE;
+				DEVELOPMENT_TEAM = A693CJRZ87;
 				INFOPLIST_FILE = OurStories/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Xiang.OurStories;
+				PRODUCT_BUNDLE_IDENTIFIER = xiang.our.stories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -652,14 +652,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48MHFE47NE;
+				DEVELOPMENT_TEAM = A693CJRZ87;
 				INFOPLIST_FILE = OurStories/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Xiang.OurStories;
+				PRODUCT_BUNDLE_IDENTIFIER = xiang.our.stories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

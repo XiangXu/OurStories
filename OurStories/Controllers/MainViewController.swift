@@ -20,7 +20,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return kolodaView
     }()
     
-    let previousButton: UIButton = {
+    lazy var previousButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "smile")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.contentVerticalAlignment = .fill
@@ -36,7 +36,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return button
     }()
     
-    let nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.contentVerticalAlignment = .fill
@@ -52,7 +52,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return button
     }()
     
-    let resettButton: UIButton = {
+    lazy var resettButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "vibe")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.contentVerticalAlignment = .fill
@@ -95,7 +95,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         self.navigationItem.title = "我们的故事"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "earth")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSelectMap))
         
-        MusicHelper.sharedHelper.playBackgroundMusic()
+//        MusicHelper.sharedHelper.playBackgroundMusic()
         setupKoloadView()
         
     }
