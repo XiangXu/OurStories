@@ -68,7 +68,7 @@ class PhotoAnnotationView: MKAnnotationView
     {
         frame = CGRect(x: 0, y: 0, width: PhotoAnnotationView.side, height: PhotoAnnotationView.side)
         collisionMode = .rectangle
-        canShowCallout = true
+        canShowCallout = false
 
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.25
@@ -87,6 +87,26 @@ class PhotoAnnotationView: MKAnnotationView
                           width: 0, height: 22)
     }
 
+    // The story card at the bottom of the map takes the place of the callout bubble.
+    override func prepareForDisplay()
+    {
+        super.prepareForDisplay()
+        canShowCallout = false
+    }
+
+    // The selected story stands out from its neighbours while its card is on screen.
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
+        super.setSelected(selected, animated: animated)
+        zPriority = selected ? .max : .defaultUnselected
+        let changes = {
+            self.plate.backgroundColor = selected ? .rose : .cardBackground
+            self.plate.transform = selected ? CGAffineTransform(scaleX: 1.18, y: 1.18) : .identity
+        }
+        guard animated else { return changes() }
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .beginFromCurrentState, animations: changes)
+    }
+
     private func configure()
     {
         var place = annotation as? VisitPlace
@@ -102,6 +122,8 @@ class PhotoAnnotationView: MKAnnotationView
             clusteringIdentifier = PhotoAnnotationView.clusteringIdentifier
             displayPriority = .defaultHigh
         }
+
+        accessibilityIdentifier = count > 1 ? "storyGroup" : "storyPin"
 
         var configuration = countBadge.configuration
         configuration?.attributedTitle = AttributedString("\(count)", attributes: AttributeContainer([

@@ -10,6 +10,7 @@ map of everywhere those stories happened.
   <img src="docs/stories.png" width="240" alt="Story cards">
   <img src="docs/stories-dark.png" width="240" alt="Story cards in dark mode">
   <img src="docs/map.png" width="240" alt="Map of stories">
+  <img src="docs/map-card.png" width="240" alt="A story selected on the map">
 </p>
 
 ## Features
@@ -21,8 +22,10 @@ map of everywhere those stories happened.
   card comes to the front.
 - **Our footprints (我们的足迹)** – the globe button opens a map that shows
   each story as its photo. Nearby stories are grouped into one photo with a
-  count; tap it to zoom in and spread them out. The map opens on the area where
-  most stories are; pan and zoom to find the rest.
+  count; tap it to zoom in and spread them out. Tap a photo and its story slides
+  up as a card at the bottom of the map; stories from the very same spot share a
+  row of cards to swipe through. The map opens on the area where most stories
+  are; pan and zoom to find the rest.
 - **Background music** – a looping track starts with the app; the music button in
   the top left pauses and resumes it.
 - **Light and dark mode** – a warm rose-and-cream palette with a dark variant.
@@ -112,6 +115,7 @@ OurStories/
     CardDeckView.swift                     swipeable card stack
     CardView.swift                         one story card
     PhotoAnnotationView.swift              story photo shown on the map
+    StoryMapCardView.swift                 story card at the bottom of the map
   Model/
     Story.swift                            one story and its date
     StoryStore.swift                       loads stories.json
@@ -147,7 +151,8 @@ example by exporting it from Preview with *Alpha* unticked).
 - **Unit tests** – story data, the typewriter's `$` pause and space handling, and
   the card deck's next / previous / start-over logic.
 - **UI tests** – launch the app, move through cards with the buttons and a swipe,
-  open the map, and check that the deck starts over after the last story.
+  open the map and a story on it, and check that the deck starts over after the
+  last story.
 
 ## History
 

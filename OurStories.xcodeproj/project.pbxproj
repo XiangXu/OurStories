@@ -15,6 +15,7 @@
 		DB6BBE1022A071CB00ED10E1 /* VisitPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E1 /* VisitPlace.swift */; };
 		DB6BBE1022A071CB00ED10E2 /* StoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E2 /* StoryStore.swift */; };
 		DB6BBE1022A071CB00ED10E4 /* PhotoAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E4 /* PhotoAnnotationView.swift */; };
+		DB6BBE1222A071CB00ED10E4 /* StoryMapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE1122A071CB00ED10E4 /* StoryMapCardView.swift */; };
 		DB6BBE1022A071CB00ED10E3 /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E3 /* stories.json */; };
 		DB97D351229492250036DCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D350229492250036DCFB /* AppDelegate.swift */; };
 		DB97D358229492270036DCFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB97D357229492270036DCFB /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		DB6BBE0F22A071CB00ED10E1 /* VisitPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitPlace.swift; sourceTree = "<group>"; };
 		DB6BBE0F22A071CB00ED10E2 /* StoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryStore.swift; sourceTree = "<group>"; };
 		DB6BBE0F22A071CB00ED10E4 /* PhotoAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnnotationView.swift; sourceTree = "<group>"; };
+		DB6BBE1122A071CB00ED10E4 /* StoryMapCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryMapCardView.swift; sourceTree = "<group>"; };
 		DB6BBE0F22A071CB00ED10E3 /* stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stories.json; sourceTree = "<group>"; };
 		DB97D34D229492250036DCFB /* OurStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB97D350229492250036DCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				DB10366422970A0C00F9CE37 /* CardView.swift */,
 				DBC0DE000000000000000A02 /* CardDeckView.swift */,
 				DB6BBE0F22A071CB00ED10E4 /* PhotoAnnotationView.swift */,
+				DB6BBE1122A071CB00ED10E4 /* StoryMapCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				DB6BBE1022A071CB00ED10E1 /* VisitPlace.swift in Sources */,
 				DB6BBE1022A071CB00ED10E2 /* StoryStore.swift in Sources */,
 				DB6BBE1022A071CB00ED10E4 /* PhotoAnnotationView.swift in Sources */,
+				DB6BBE1222A071CB00ED10E4 /* StoryMapCardView.swift in Sources */,
 				DBD47B7C22949FF5003E70AC /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
