@@ -30,12 +30,12 @@ xcodebuild -project OurStories.xcodeproj -scheme OurStories \
 
 ## Architecture
 
-**No storyboards for UI** (only `LaunchScreen.storyboard`). The app uses the scene lifecycle: `Info.plist` declares `SceneDelegate`, which builds the window by hand with `NavigationController(rootViewController: MainViewController())` as root. All views are built in code with lazy/closure-initialised properties and laid out with the `UIView.anchor(top:left:bottom:right:padding…:width:height:)` helper in `Utils/UIView+Helper.swift` — use that helper rather than raw constraints or Interface Builder.
+**No storyboards for UI** (only `LaunchScreen.storyboard`). The app uses the scene lifecycle: `Info.plist` declares `SceneDelegate`, which builds the window by hand with `UINavigationController(rootViewController: MainViewController())` as root. All views are built in code with lazy/closure-initialised properties and laid out with the `UIView.anchor(top:left:bottom:right:padding…:width:height:)` helper in `Utils/UIView+Helper.swift` — use that helper rather than raw constraints or Interface Builder.
 
 **All content is hardcoded in `Model/Story.swift`.** `Story.storyGenerate()` returns the full, ordered array of stories (location, text, image name, coordinate). There is no persistence or networking. Both screens call it independently:
 
-- `MainViewController` — a `CardDeckView` card deck, one `CardView` per story, with previous / reset / next buttons. When the deck runs out it shows an alert whose button opens a mail composer; the deck resets when the composer closes (or immediately if the device cannot send mail, as in the simulator).
-- `MapViewController` — an `MKMapView` with one `VisitPlace` annotation per story.
+- `MainViewController` — a `CardDeckView` card deck, one `CardView` per story, with previous / reset / next buttons. When the deck runs out it starts over from the first story. The navigation bar has a music toggle on the left and the map button on the right.
+- `MapViewController` — an `MKMapView` with one `VisitPlace` marker per story, zoomed to fit all of them.
 
 So adding or editing a story means editing only the array in `Story.swift` (plus adding the image); card order is array order.
 
@@ -45,6 +45,8 @@ So adding or editing a story means editing only the array in `Story.swift` (plus
 
 **Typewriter text.** `CardView.contentTextField` is a `TypeOnTextView` (`Utils/UITextView-Helper.swift`) that reveals text one character per 0.15s timer tick. In story text, `$` is a control character: it is not printed and consumes one tick (a pause); runs of spaces are emitted within a single tick. The per-tick logic is the pure function `TypeOnTextView.typeOnSteps(for:)`, which is what the unit tests cover. Typing is kicked off in `cardDeck(_:didShowCardAt:)`, which calls `resetTypeOn()` first — keep that reset/start pairing when touching card lifecycle code.
 
-**Background music.** `MusicHelper.sharedHelper.playBackgroundMusic()` loops `Resources/jay.mp3`; the call in `MainViewController.viewDidLoad` is currently commented out.
+**Background music.** `MusicHelper.sharedHelper` loops `Resources/jay.mp3`. It starts in `MainViewController.viewDidLoad` and the speaker button in the navigation bar pauses and resumes it.
 
-**Theming.** Navigation bar appearance is set globally in `AppDelegate` (a `UINavigationBarAppearance` using `UIColor.lightRed`); app colours live in `Utils/UIColor+Helper.swift`.
+**Theming.** The look is a warm "memory album": the palette lives in `Utils/UIColor+Helper.swift` as dynamic light/dark colours (`rose` accent, `appBackground`, `cardBackground`, `titleText`, `bodyText`) — use those rather than system or hardcoded colours. `rose` is also the window tint (`SceneDelegate`). Icons are SF Symbols, fonts are system fonts (iOS ships no Chinese serif face, so `Songti` is not an option without bundling a font), and the navigation bar keeps the system appearance apart from the title font set in `AppDelegate`. Story text gets its line spacing through `TypeOnTextView.typeOnAttributes`, because appending to `text` would drop paragraph styles.
+
+**App icon.** `Assets.xcassets/AppIcon.appiconset/AppIcon.png` is a single 1024px image (no alpha).
