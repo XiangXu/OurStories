@@ -32,7 +32,7 @@ xcodebuild -project OurStories.xcodeproj -scheme OurStories \
 
 **No storyboards for UI** (only `LaunchScreen.storyboard`). The app uses the scene lifecycle: `Info.plist` declares `SceneDelegate`, which builds the window by hand with `UINavigationController(rootViewController: MainViewController())` as root. All views are built in code with lazy/closure-initialised properties and laid out with the `UIView.anchor(top:left:bottom:right:padding…:width:height:)` helper in `Utils/UIView+Helper.swift` — use that helper rather than raw constraints or Interface Builder.
 
-**All content is hardcoded in `Model/Story.swift`.** `Story.storyGenerate()` returns the full, ordered array of stories (location, text, image name, coordinate). There is no persistence or networking. Both screens call it independently:
+**All content is hardcoded in `Model/Story.swift`.** `Story.storyGenerate()` returns the full, ordered array of stories (location, date, text, image name, coordinate). `date` is an optional `StoryDate` (year, month, optional day) — the placeholder stories have none — and it is not repeated in the story text; `CardView` shows `date.displayText` in the `dateBadge` capsule on the photo and the map uses it as the marker subtitle. There is no persistence or networking. Both screens call it independently:
 
 - `MainViewController` — a `CardDeckView` card deck, one `CardView` per story, with previous / reset / next buttons. When the deck runs out it starts over from the first story. The navigation bar has a music toggle on the left and the map button on the right.
 - `MapViewController` — an `MKMapView` with one `VisitPlace` marker per story, zoomed to fit all of them.

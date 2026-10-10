@@ -74,11 +74,15 @@ markers from the same array.
 
 ```swift
 Story(location: "爱尔兰-梅努斯",
-      storyContent: "2012年7月 我们第一次相遇在梅努斯这个小镇 ...",
+      date: StoryDate(year: 2012, month: 7),
+      storyContent: "我们第一次相遇在梅努斯这个小镇 ...",
       imageName: "1.png",
       coordinate: CLLocationCoordinate2D(latitude: 53.381210, longitude: -6.592220)),
 ```
 
+- `date` is shown as a badge on the photo (`2012年7月`) and under the place name on
+  the map. Add `day:` when the exact day matters (`2021年7月7日`), or leave `date`
+  out and the badge is hidden. Keep the date out of `storyContent`.
 - `imageName` is `"N.png"`, which refers to the image set named `N` in
   `Assets.xcassets`. To add a photo, create a new image set with the next number
   and drop the picture in.
