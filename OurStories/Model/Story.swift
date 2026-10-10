@@ -307,7 +307,7 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 52.668018, longitude: -8.630498)),
             
             Story(location: "爱尔兰-都柏林 - Rotunda Hospital",
-                  storyContent: "2021年7月7日 这一天我们牛牛出生啦 ",
+                  storyContent: "2021年7月7日 这一天我们沐沐出生啦 ",
                   imageName: "2.png",
                   coordinate: CLLocationCoordinate2D(latitude: 53.3531, longitude: -6.2632)),
             
@@ -316,7 +316,7 @@ struct Story
                   imageName: "2.png",
                   coordinate: CLLocationCoordinate2D(latitude: 53.301919, longitude: -6.151080)),
             
-            Story(location: "爱尔兰-都柏林 - The Pig Ears",
+            Story(location: "爱尔兰-都柏林 - The Pig's Ear",
                   storyContent: "牛牛100天",
                   imageName: "2.png",
                   coordinate: CLLocationCoordinate2D(latitude: 53.301919, longitude: -6.151080)),

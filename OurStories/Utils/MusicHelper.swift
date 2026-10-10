@@ -11,14 +11,22 @@ import AVFoundation
 class MusicHelper {
     static let sharedHelper = MusicHelper()
     var audioPlayer: AVAudioPlayer?
-    
+
+    var isPlaying: Bool {
+        return audioPlayer?.isPlaying ?? false
+    }
+
     func playBackgroundMusic() {
-        if let bundle = Bundle.main.path(forResource: "jay", ofType: "mp3"){
-            let backgroundMusic = NSURL(fileURLWithPath: bundle)
+        if let audioPlayer = audioPlayer {
+            audioPlayer.play()
+            return
+        }
+
+        if let backgroundMusic = Bundle.main.url(forResource: "jay", withExtension: "mp3"){
             do {
                 try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
                 try AVAudioSession.sharedInstance().setActive(true)
-                audioPlayer = try AVAudioPlayer(contentsOf:backgroundMusic as URL)
+                audioPlayer = try AVAudioPlayer(contentsOf: backgroundMusic)
                 guard let audioPlayer = audioPlayer else { return }
                 audioPlayer.numberOfLoops = -1
                 audioPlayer.prepareToPlay()
@@ -27,5 +35,9 @@ class MusicHelper {
                 print(error)
             }
         }
+    }
+
+    func pauseBackgroundMusic() {
+        audioPlayer?.pause()
     }
 }
