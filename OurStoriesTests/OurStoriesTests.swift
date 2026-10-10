@@ -66,11 +66,11 @@ class OurStoriesTests: XCTestCase {
     func testCardShowsDateOnlyForDatedStories() {
         let coordinate = CLLocationCoordinate2D(latitude: 53.38, longitude: -6.59)
         let card = CardView()
-        card.story = Story(location: "爱尔兰-梅努斯", date: StoryDate(year: 2012, month: 7), storyContent: "故事", imageName: "1.png", coordinate: coordinate)
+        card.story = Story(location: "爱尔兰-梅努斯", date: StoryDate(year: 2012, month: 7), storyContent: "故事", imageName: "ireland-maynooth", coordinate: coordinate)
         XCTAssertFalse(card.dateBadge.isHidden)
         XCTAssertEqual(card.dateBadge.configuration?.title, "2012年7月")
 
-        card.story = Story(location: "爱尔兰-梅努斯", storyContent: "故事", imageName: "1.png", coordinate: coordinate)
+        card.story = Story(location: "爱尔兰-梅努斯", storyContent: "故事", imageName: "ireland-maynooth", coordinate: coordinate)
         XCTAssertTrue(card.dateBadge.isHidden)
     }
 
