@@ -11,6 +11,10 @@ import UIKit
 class TypeOnTextView: UITextView {
 
     fileprivate var typeTimer: Timer? = nil
+    
+    /// When set, typed text is added with these attributes (e.g. a paragraph style)
+    /// instead of the plain font and colour of the text view.
+    var typeOnAttributes: [NSAttributedString.Key: Any]?
 
     deinit {
         typeTimer?.invalidate()
@@ -57,7 +61,13 @@ class TypeOnTextView: UITextView {
                 return
             }
             
-            self.text.append(steps[stepIndex])
+            if let attributes = self.typeOnAttributes {
+                self.textStorage.append(NSAttributedString(string: steps[stepIndex], attributes: attributes))
+            } else {
+                self.text.append(steps[stepIndex])
+            }
+            // Keep the line being typed in view when the story is longer than the card.
+            self.scrollRangeToVisible(NSRange(location: self.textStorage.length, length: 0))
             stepIndex += 1
             if stepIndex == steps.count {
                 timer.invalidate()

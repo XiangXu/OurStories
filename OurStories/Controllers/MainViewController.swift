@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import MessageUI
 
-class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckViewDelegate, MFMailComposeViewControllerDelegate
+class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckViewDelegate
 {
     let stories = Story.storyGenerate()
     
@@ -18,25 +17,33 @@ class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckView
         return kolodaView
     }()
     
-    lazy var previousButton = makeRoundButton(imageName: "smile", action: #selector(hanldePreviousCard))
+    lazy var previousButton = makeRoundButton(symbolName: "arrow.left", identifier: "previous", isPrimary: false, action: #selector(hanldePreviousCard))
     
-    lazy var nextButton = makeRoundButton(imageName: "heart", action: #selector(hanldeNextCard))
+    lazy var nextButton = makeRoundButton(symbolName: "heart.fill", identifier: "next", isPrimary: true, action: #selector(hanldeNextCard))
     
-    lazy var resettButton = makeRoundButton(imageName: "vibe", action: #selector(handleResetCard))
+    lazy var resettButton = makeRoundButton(symbolName: "arrow.counterclockwise", identifier: "reset", isPrimary: false, action: #selector(handleResetCard))
     
-    private func makeRoundButton(imageName: String, action: Selector) -> UIButton
+    private func makeRoundButton(symbolName: String, identifier: String, isPrimary: Bool, action: Selector) -> UIButton
     {
-        var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
-        configuration.background.backgroundColor = .white
-        configuration.background.cornerRadius = 35
-        configuration.background.strokeColor = .gray
-        configuration.background.strokeWidth = 1.5
-        configuration.cornerStyle = .fixed
+        let size: CGFloat = isPrimary ? 72 : 56
+        
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: symbolName,
+                                      withConfiguration: UIImage.SymbolConfiguration(pointSize: isPrimary ? 26 : 20, weight: .semibold))
+        configuration.baseBackgroundColor = isPrimary ? .rose : .cardBackground
+        configuration.baseForegroundColor = isPrimary ? .white : .rose
+        configuration.cornerStyle = .capsule
         
         let button = UIButton(configuration: configuration)
+        button.layer.shadowColor = UIColor.rgb(red: 190, green: 60, blue: 90).cgColor
+        button.layer.shadowOpacity = isPrimary ? 0.4 : 0.15
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = CGSize(width: 0, height: 5)
+        button.anchor(top: nil, left: nil, bottom: nil, right: nil,
+                      paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
+                      width: size, height: size)
         button.addTarget(self, action: action, for: .touchUpInside)
-        button.accessibilityIdentifier = imageName
+        button.accessibilityIdentifier = identifier
         return button
     }
     
@@ -61,14 +68,37 @@ class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckView
         navigationController?.pushViewController(mapViewController, animated: true)
     }
     
+    @objc func handleToggleMusic()
+    {
+        if MusicHelper.sharedHelper.isPlaying {
+            MusicHelper.sharedHelper.pauseBackgroundMusic()
+        } else {
+            MusicHelper.sharedHelper.playBackgroundMusic()
+        }
+        updateMusicButton()
+    }
+    
+    private func updateMusicButton()
+    {
+        self.navigationItem.leftBarButtonItem?.image = MusicHelper.sharedHelper.isPlaying
+            ? UIImage(systemName: "music.note")
+            : UIImage(systemName: "music.note.slash") ?? UIImage(systemName: "speaker.slash.fill")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .appBackground
         self.navigationItem.title = "我们的故事"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "earth")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSelectMap))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "globe.europe.africa.fill"), style: .plain, target: self, action: #selector(handleSelectMap))
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "map"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(handleToggleMusic))
+        self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "music"
+        self.navigationItem.leftBarButtonItem?.tintColor = .rose
+        self.navigationItem.rightBarButtonItem?.tintColor = .rose
         
-//        MusicHelper.sharedHelper.playBackgroundMusic()
+        MusicHelper.sharedHelper.playBackgroundMusic()
+        updateMusicButton()
         setupKoloadView()
         
     }
@@ -78,25 +108,22 @@ class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckView
         kolodaView.dataSource = self
         kolodaView.delegate = self
         
-        view.addSubview(kolodaView)
-        kolodaView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor,
-                          paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8,
-                          width: 0, height:500)
-        kolodaView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        
         let stackView = UIStackView(arrangedSubviews: [previousButton, resettButton, nextButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fillEqually
         stackView.axis = .horizontal
-        stackView.spacing = 45
+        stackView.alignment = .center
+        stackView.spacing = 32
         
         view.addSubview(stackView)
-        
-        stackView.anchor(top: kolodaView.bottomAnchor, left: nil, bottom: nil, right: nil,
-                         paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
-                         width: 300, height: 70)
+        stackView.anchor(top: nil, left: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: nil,
+                         paddingTop: 0, paddingLeft: 0, paddingBottom: 12, paddingRight: 0,
+                         width: 0, height: 72)
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        // The bottom padding leaves room for the cards stacked behind the top one.
+        view.addSubview(kolodaView)
+        kolodaView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: stackView.topAnchor, right: view.rightAnchor,
+                          paddingTop: 12, paddingLeft: 20, paddingBottom: 44, paddingRight: 20,
+                          width: 0, height: 0)
         
         kolodaView.reloadData()
     }
@@ -110,42 +137,18 @@ class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckView
     {
         let cardView = CardView()
         cardView.story = stories[index]
+        cardView.pageText = "\(index + 1) / \(stories.count)"
         return cardView
     }
     
     func cardDeckDidRunOutOfCards(_ cardDeck: CardDeckView) {
-        let title = "测试段落？"
-        let message = "测试段落测试段落测试段落测试段落测试段落测试段落"
-        let popup = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        popup.addAction(UIAlertAction(title: "I say yes", style: .default) { _ in
-            self.sendEmail()
-        })
-        self.present(popup, animated: true, completion: nil)
+        // Start over from the first story.
+        cardDeck.resetCurrentCardIndex()
     }
     
     func cardDeck(_ cardDeck: CardDeckView, didShowCardAt index: Int) {
         guard let cardView = cardDeck.topCard as? CardView else { return }
         cardView.contentTextField.resetTypeOn()
         cardView.contentTextField.typeOn(string: stories[index].storyContent)
-    }
-    
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setSubject("I say yes!")
-            mail.setToRecipients(["xuxiang1990619@gmail.com"])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
-            
-            present(mail, animated: true)
-        } else {
-            print("Cannot send email")
-            kolodaView.resetCurrentCardIndex()
-        }
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-        kolodaView.resetCurrentCardIndex()
     }
 }
