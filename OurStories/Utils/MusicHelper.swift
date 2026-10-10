@@ -11,8 +11,17 @@ import AVFoundation
 class MusicHelper {
     static let sharedHelper = MusicHelper()
     var audioPlayer: AVAudioPlayer?
-    
+
+    var isPlaying: Bool {
+        return audioPlayer?.isPlaying ?? false
+    }
+
     func playBackgroundMusic() {
+        if let audioPlayer = audioPlayer {
+            audioPlayer.play()
+            return
+        }
+
         if let backgroundMusic = Bundle.main.url(forResource: "jay", withExtension: "mp3"){
             do {
                 try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -26,5 +35,9 @@ class MusicHelper {
                 print(error)
             }
         }
+    }
+
+    func pauseBackgroundMusic() {
+        audioPlayer?.pause()
     }
 }
