@@ -14,6 +14,7 @@
 		DB26E8D9229F20C80093A2F0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E8D8229F20C80093A2F0 /* MapViewController.swift */; };
 		DB6BBE1022A071CB00ED10E1 /* VisitPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E1 /* VisitPlace.swift */; };
 		DB6BBE1022A071CB00ED10E2 /* StoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E2 /* StoryStore.swift */; };
+		DB6BBE1022A071CB00ED10E4 /* PhotoAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E4 /* PhotoAnnotationView.swift */; };
 		DB6BBE1022A071CB00ED10E3 /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = DB6BBE0F22A071CB00ED10E3 /* stories.json */; };
 		DB97D351229492250036DCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D350229492250036DCFB /* AppDelegate.swift */; };
 		DB97D358229492270036DCFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB97D357229492270036DCFB /* Assets.xcassets */; };
@@ -22,10 +23,10 @@
 		DB97D371229492280036DCFB /* OurStoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D370229492280036DCFB /* OurStoriesUITests.swift */; };
 		DB97D3802294938B0036DCFB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D37F2294938B0036DCFB /* MainViewController.swift */; };
 		DB97D386229494FE0036DCFB /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97D385229494FE0036DCFB /* MusicHelper.swift */; };
-		DBD47B7C22949FF5003E70AC /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD47B7B22949FF5003E70AC /* Story.swift */; };
-		DBFF91D0254608C4007DDBBE /* jay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFF91CF254608C4007DDBBE /* jay.mp3 */; };
 		DBC0DE000000000000000B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0DE000000000000000A01 /* SceneDelegate.swift */; };
 		DBC0DE000000000000000B02 /* CardDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0DE000000000000000A02 /* CardDeckView.swift */; };
+		DBD47B7C22949FF5003E70AC /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD47B7B22949FF5003E70AC /* Story.swift */; };
+		DBFF91D0254608C4007DDBBE /* jay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFF91CF254608C4007DDBBE /* jay.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		DB26E8D8229F20C80093A2F0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DB6BBE0F22A071CB00ED10E1 /* VisitPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitPlace.swift; sourceTree = "<group>"; };
 		DB6BBE0F22A071CB00ED10E2 /* StoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryStore.swift; sourceTree = "<group>"; };
+		DB6BBE0F22A071CB00ED10E4 /* PhotoAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnnotationView.swift; sourceTree = "<group>"; };
 		DB6BBE0F22A071CB00ED10E3 /* stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stories.json; sourceTree = "<group>"; };
 		DB97D34D229492250036DCFB /* OurStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB97D350229492250036DCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,10 +69,10 @@
 		DB97D372229492280036DCFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB97D37F2294938B0036DCFB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DB97D385229494FE0036DCFB /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
-		DBD47B7B22949FF5003E70AC /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		DBFF91CF254608C4007DDBBE /* jay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jay.mp3; sourceTree = "<group>"; };
 		DBC0DE000000000000000A01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DBC0DE000000000000000A02 /* CardDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeckView.swift; sourceTree = "<group>"; };
+		DBD47B7B22949FF5003E70AC /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		DBFF91CF254608C4007DDBBE /* jay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jay.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				DB10366422970A0C00F9CE37 /* CardView.swift */,
 				DBC0DE000000000000000A02 /* CardDeckView.swift */,
+				DB6BBE0F22A071CB00ED10E4 /* PhotoAnnotationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -263,8 +266,9 @@
 		DB97D345229492250036DCFB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "Xiang Xu";
 				TargetAttributes = {
 					DB97D34C229492250036DCFB = {
@@ -328,9 +332,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		DB97D349229492250036DCFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -348,6 +349,7 @@
 				DB10365E2296068F00F9CE37 /* UIView+Helper.swift in Sources */,
 				DB6BBE1022A071CB00ED10E1 /* VisitPlace.swift in Sources */,
 				DB6BBE1022A071CB00ED10E2 /* StoryStore.swift in Sources */,
+				DB6BBE1022A071CB00ED10E4 /* PhotoAnnotationView.swift in Sources */,
 				DBD47B7C22949FF5003E70AC /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +435,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -452,6 +455,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -495,6 +499,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -507,6 +512,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -554,7 +560,6 @@
 		DB97D379229492280036DCFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPTP64N8VK;
@@ -575,7 +580,6 @@
 		DB97D37A229492280036DCFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPTP64N8VK;
@@ -596,7 +600,6 @@
 		DB97D37C229492280036DCFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPTP64N8VK;
 				INFOPLIST_FILE = OurStoriesUITests/Info.plist;
@@ -616,7 +619,6 @@
 		DB97D37D229492280036DCFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPTP64N8VK;
 				INFOPLIST_FILE = OurStoriesUITests/Info.plist;

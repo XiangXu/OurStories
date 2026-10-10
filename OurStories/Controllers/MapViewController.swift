@@ -39,9 +39,11 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     private func setupAnnotation()
     {
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        for story in stories {
-            mapView.addAnnotation(VisitPlace(title: story.location, subtitle: story.date?.displayText, coordinate: story.coordinate))
+        mapView.register(PhotoAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(PhotoAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+        for (index, story) in stories.enumerated() {
+            mapView.addAnnotation(VisitPlace(title: story.location, subtitle: story.date?.displayText, coordinate: story.coordinate,
+                                             imageName: story.imageName, order: index))
         }
     }
     
@@ -70,15 +72,28 @@ class MapViewController: UIViewController, MKMapViewDelegate
         mapView.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsets(top: 80, left: 50, bottom: 60, right: 50), animated: false)
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    func mapView(_ mapView: MKMapView, clusterAnnotationForMemberAnnotations memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation
     {
-        guard annotation is VisitPlace else { return nil }
+        let cluster = MKClusterAnnotation(memberAnnotations: memberAnnotations)
+        let places = memberAnnotations.compactMap { $0 as? VisitPlace }
+        cluster.title = places.min { $0.order < $1.order }?.title
+        cluster.subtitle = "共\(places.count)个故事"
+        return cluster
+    }
+    
+    // Tapping a group zooms in until its stories come apart.
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
+        guard let cluster = view.annotation as? MKClusterAnnotation else { return }
         
-        let view = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
-        if let marker = view as? MKMarkerAnnotationView {
-            marker.markerTintColor = .rose
-            marker.glyphImage = UIImage(systemName: "heart.fill")
+        var mapRect = MKMapRect.null
+        for member in cluster.memberAnnotations {
+            mapRect = mapRect.union(MKMapRect(origin: MKMapPoint(member.coordinate), size: MKMapSize(width: 0, height: 0)))
         }
-        return view
+        // Stories at the very same spot cannot be pulled apart, so their callout stays instead.
+        guard max(mapRect.width, mapRect.height) > 2_000 else { return }
+        
+        mapView.deselectAnnotation(cluster, animated: false)
+        mapView.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsets(top: 120, left: 70, bottom: 100, right: 70), animated: true)
     }
 }

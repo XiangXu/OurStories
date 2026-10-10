@@ -19,9 +19,10 @@ map of everywhere those stories happened.
   starts again from the first.
 - **Typewriter text** – each story is typed out character by character when its
   card comes to the front.
-- **Our footprints (我们的足迹)** – the globe button opens a map with a heart
-  marker for every story. It opens on the area where most stories are; pan and
-  zoom to find the rest.
+- **Our footprints (我们的足迹)** – the globe button opens a map that shows
+  each story as its photo. Nearby stories are grouped into one photo with a
+  count; tap it to zoom in and spread them out. The map opens on the area where
+  most stories are; pan and zoom to find the rest.
 - **Background music** – a looping track starts with the app; the music button in
   the top left pauses and resumes it.
 - **Light and dark mode** – a warm rose-and-cream palette with a dark variant.
@@ -93,8 +94,8 @@ from the same list.
   and drop the picture in.
 - In `text`, a `$` is never shown: it makes the typewriter pause for one
   beat. Use several for a longer pause.
-- Several later stories still use placeholder text (`测试段落…`) and reuse the
-  first photos; they are waiting for their real words and pictures.
+- Two stories (Eindhoven and Spiez) have no photo of their own yet and reuse
+  the first photos; one is also still waiting for its date.
 
 The unit tests check that the file decodes and that every story has text, a
 valid coordinate and an image that exists, so run them after editing.
@@ -106,10 +107,11 @@ OurStories/
   AppDelegate.swift, SceneDelegate.swift   app start-up, builds the window in code
   Controllers/
     MainViewController.swift               story deck, buttons, music toggle
-    MapViewController.swift                map with one marker per story
+    MapViewController.swift                map with one photo per story
   View/
     CardDeckView.swift                     swipeable card stack
     CardView.swift                         one story card
+    PhotoAnnotationView.swift              story photo shown on the map
   Model/
     Story.swift                            one story and its date
     StoryStore.swift                       loads stories.json
