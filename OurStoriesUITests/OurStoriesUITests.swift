@@ -11,24 +11,64 @@ import XCTest
 class OurStoriesUITests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testBrowseStoriesAndOpenMap() {
+        let app = XCUIApplication()
+        app.launch()
+
+        XCTAssertTrue(app.navigationBars["我们的故事"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["爱尔兰-梅努斯"].exists)
+        // Let the typewriter run for a while before capturing the first card.
+        sleep(4)
+        attachScreenshot(named: "1-first-card")
+
+        app.buttons["heart"].tap()
+        sleep(3)
+        attachScreenshot(named: "2-after-next-button")
+
+        app.staticTexts["爱尔兰-都柏林"].firstMatch.swipeLeft()
+        sleep(3)
+        attachScreenshot(named: "3-after-swipe")
+
+        app.buttons["smile"].tap()
+        sleep(2)
+        attachScreenshot(named: "4-after-previous-button")
+
+        app.buttons["vibe"].tap()
+        sleep(2)
+        attachScreenshot(named: "5-after-reset-button")
+
+        app.navigationBars["我们的故事"].buttons.firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["我们的足迹"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.maps.firstMatch.exists)
+        sleep(4)
+        attachScreenshot(named: "6-map")
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testEndOfDeckShowsPopupAndResets() {
+        let app = XCUIApplication()
+        app.launch()
+        XCTAssertTrue(app.navigationBars["我们的故事"].waitForExistence(timeout: 10))
+
+        let nextButton = app.buttons["heart"]
+        let yesButton = app.alerts.buttons["I say yes"]
+        for _ in 0..<200 where !yesButton.exists {
+            nextButton.tap()
+        }
+        XCTAssertTrue(yesButton.waitForExistence(timeout: 5))
+        attachScreenshot(named: "7-end-of-deck-popup")
+
+        // The simulator cannot send mail, so the deck resets straight away.
+        yesButton.tap()
+        XCTAssertTrue(app.staticTexts["爱尔兰-梅努斯"].waitForExistence(timeout: 5))
     }
 
+    private func attachScreenshot(named name: String) {
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
 }
