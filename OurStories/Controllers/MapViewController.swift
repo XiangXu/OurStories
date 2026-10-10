@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate
 {
-    let stories = Story.storyGenerate()
+    let stories = StoryStore.shared.stories
     
     lazy var mapView: MKMapView = {
         let mapView = MKMapView()

@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckViewDelegate
 {
-    let stories = Story.storyGenerate()
+    let stories = StoryStore.shared.stories
     
     private var kolodaView: CardDeckView = {
         let kolodaView = CardDeckView()

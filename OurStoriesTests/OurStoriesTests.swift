@@ -13,24 +13,31 @@ import CoreLocation
 class OurStoriesTests: XCTestCase {
 
     func testStoriesAreNotEmpty() {
-        XCTAssertFalse(Story.storyGenerate().isEmpty)
+        XCTAssertFalse(StoryStore.shared.stories.isEmpty)
+    }
+
+    func testStoriesFileDecodes() throws {
+        let stories = try StoryStore.loadStories(from: .main)
+        XCTAssertEqual(stories.count, StoryStore.shared.stories.count)
+        XCTAssertEqual(stories.first?.location, "爱尔兰-梅努斯")
+        XCTAssertEqual(stories.first?.date, StoryDate(year: 2012, month: 7))
     }
 
     func testEveryStoryHasText() {
-        for story in Story.storyGenerate() {
+        for story in StoryStore.shared.stories {
             XCTAssertFalse(story.location.isEmpty)
             XCTAssertFalse(story.storyContent.isEmpty, "Missing text for \(story.location)")
         }
     }
 
     func testEveryStoryImageExists() {
-        for story in Story.storyGenerate() {
+        for story in StoryStore.shared.stories {
             XCTAssertNotNil(UIImage(named: story.imageName), "Missing image \(story.imageName) for \(story.location)")
         }
     }
 
     func testEveryStoryCoordinateIsValid() {
-        for story in Story.storyGenerate() {
+        for story in StoryStore.shared.stories {
             XCTAssertTrue(CLLocationCoordinate2DIsValid(story.coordinate), "Invalid coordinate for \(story.location)")
         }
     }
@@ -41,7 +48,7 @@ class OurStoriesTests: XCTestCase {
     }
 
     func testEveryStoryDateIsValid() {
-        for story in Story.storyGenerate() {
+        for story in StoryStore.shared.stories {
             guard let date = story.date else { continue }
             XCTAssertTrue((1...12).contains(date.month), "Invalid month for \(story.location)")
             if let day = date.day {
@@ -51,13 +58,13 @@ class OurStoriesTests: XCTestCase {
     }
 
     func testDatedStoriesAreInChronologicalOrder() {
-        let months = Story.storyGenerate().compactMap { $0.date }.map { $0.year * 12 + $0.month }
+        let months = StoryStore.shared.stories.compactMap { $0.date }.map { $0.year * 12 + $0.month }
         XCTAssertEqual(months, months.sorted())
     }
 
     // The date lives in `Story.date`; the text should not repeat it.
     func testStoryTextDoesNotStartWithDate() {
-        for story in Story.storyGenerate() {
+        for story in StoryStore.shared.stories {
             XCTAssertNil(story.storyContent.range(of: "^\\d{4}年", options: .regularExpression),
                          "Move the date of \(story.location) into `date`")
         }
