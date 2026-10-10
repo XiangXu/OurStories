@@ -31,7 +31,7 @@ xcodebuild -project OurStories.xcodeproj -scheme OurStories \
 
 ## Tests
 
-- `OurStoriesTests` — story data (every story has text, a valid coordinate and an image that resolves), `TypeOnTextView.typeOnSteps(for:)`, and `CardDeckView` index logic. Run these after editing `Story.swift`.
+- `OurStoriesTests` — story data (every story has text, a valid coordinate and an image that resolves), `TypeOnTextView.typeOnSteps(for:)`, and `CardDeckView` index logic. Run these after editing `stories.json`.
 - `OurStoriesUITests` — walks the deck and opens the map (attaching screenshots to the result bundle), and checks the deck starts over after the last story (about 40s, it taps through every card). They find controls by accessibility identifier: `previous`, `reset`, `next`, `music`, `map`, and the page badge by its `"1 / N"` label — keep those when changing the UI.
 
 ## Git workflow
@@ -42,12 +42,12 @@ Trunk-based: short-lived `feature/<name>` branches off `master`, merged back thr
 
 **No storyboards for UI** (only `LaunchScreen.storyboard`). The app uses the scene lifecycle: `Info.plist` declares `SceneDelegate`, which builds the window by hand with `UINavigationController(rootViewController: MainViewController())` as root. All views are built in code with lazy/closure-initialised properties and laid out with the `UIView.anchor(top:left:bottom:right:padding…:width:height:)` helper in `Utils/UIView+Helper.swift` — use that helper rather than raw constraints or Interface Builder.
 
-**All content is hardcoded in `Model/Story.swift`.** `Story.storyGenerate()` returns the full, ordered array of stories (location, date, text, image name, coordinate). `date` is an optional `StoryDate` (year, month, optional day) — the placeholder stories have none — and it is not repeated in the story text; `CardView` shows `date.displayText` in the `dateBadge` capsule on the photo and the map uses it as the marker subtitle. There is no persistence or networking. Both screens call it independently:
+**All content is bundled in `Resources/stories.json`.** It is an ordered array of stories (`location`, optional `date`, `text`, `image`, `latitude`, `longitude`) that `Story` (`Model/Story.swift`) decodes, mapping `text`/`image` to `storyContent`/`imageName`. `StoryStore.shared.stories` (`Model/StoryStore.swift`) loads it once and crashes on a malformed file, so a typo shows up at launch and in the unit tests rather than at compile time. `date` is an optional `StoryDate` (year, month, optional day) — the placeholder stories have none — and it is not repeated in the story text; `CardView` shows `date.displayText` in the `dateBadge` capsule on the photo and the map uses it as the marker subtitle. There is no persistence or networking. Both screens read the store:
 
 - `MainViewController` — a `CardDeckView` card deck, one `CardView` per story, with previous / reset / next buttons. When the deck runs out it starts over from the first story. The navigation bar has a music toggle on the left and the map button on the right.
 - `MapViewController` — an `MKMapView` with one `VisitPlace` marker per story. A phone cannot show every pin at once, so it opens fitted to the stories within 2,500 km of the median coordinate; the rest are reached by panning.
 
-So adding or editing a story means editing only the array in `Story.swift` (plus adding the image); card order is array order.
+So adding or editing a story means editing only `stories.json` (plus adding the image); card order is array order.
 
 **Card deck.** `View/CardDeckView.swift` is an in-app replacement for the Koloda pod: a data source supplies card views, the top card is dragged with a pan gesture, and `swipe(_:)`, `revertAction()` and `resetCurrentCardIndex()` drive it from the buttons. It keeps at most three card views alive and updates its index synchronously, so the delegate callbacks fire before the animations finish.
 

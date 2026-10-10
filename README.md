@@ -68,33 +68,36 @@ The app uses no permission-protected features, so no privacy prompts appear.
 
 ## Adding or editing a story
 
-All content lives in one place: the array returned by `Story.storyGenerate()` in
-`OurStories/Model/Story.swift`. Cards appear in array order, and the map gets its
-markers from the same array.
+All content lives in one place: `OurStories/Resources/stories.json`, a list with
+one entry per story. Cards appear in list order, and the map gets its markers
+from the same list.
 
-```swift
-Story(location: "爱尔兰-梅努斯",
-      date: StoryDate(year: 2012, month: 7),
-      storyContent: "我们第一次相遇在梅努斯这个小镇 ...",
-      imageName: "ireland-maynooth",
-      coordinate: CLLocationCoordinate2D(latitude: 53.381210, longitude: -6.592220)),
+```json
+{
+  "location": "爱尔兰-梅努斯",
+  "date": { "year": 2012, "month": 7 },
+  "text": "我们第一次相遇在梅努斯这个小镇 ...",
+  "image": "ireland-maynooth",
+  "latitude": 53.38121,
+  "longitude": -6.59222
+}
 ```
 
 - `date` is shown as a badge on the photo (`2012年7月`) and under the place name on
-  the map. Add `day:` when the exact day matters (`2021年7月7日`), or leave `date`
-  out and the badge is hidden. Keep the date out of `storyContent`.
-- `imageName` is the name of an image set in `Assets.xcassets`. Image sets are
+  the map. Add `"day"` when the exact day matters (`2021年7月7日`), or leave `date`
+  out and the badge is hidden. Keep the date out of `text`.
+- `image` is the name of an image set in `Assets.xcassets`. Image sets are
   named after the place, `country-place` in lowercase English
   (`ireland-maynooth`), with the year added when a place comes back
   (`france-paris-2023`). To add a photo, create a new image set named that way
   and drop the picture in.
-- In `storyContent`, a `$` is never shown: it makes the typewriter pause for one
+- In `text`, a `$` is never shown: it makes the typewriter pause for one
   beat. Use several for a longer pause.
 - Several later stories still use placeholder text (`测试段落…`) and reuse the
   first photos; they are waiting for their real words and pictures.
 
-The unit tests check that every story has text, a valid coordinate and an image
-that exists, so run them after editing.
+The unit tests check that the file decodes and that every story has text, a
+valid coordinate and an image that exists, so run them after editing.
 
 ## Project structure
 
@@ -108,9 +111,11 @@ OurStories/
     CardDeckView.swift                     swipeable card stack
     CardView.swift                         one story card
   Model/
-    Story.swift                            all the stories
+    Story.swift                            one story and its date
+    StoryStore.swift                       loads stories.json
     VisitPlace.swift                       map annotation
   Utils/                                   colours, layout helper, typewriter text view, music
+  Resources/stories.json                   all the stories
   Resources/jay.mp3                        background music
   Assets.xcassets                          photos and app icon
 OurStoriesTests/                           unit tests (stories, typewriter, deck)
