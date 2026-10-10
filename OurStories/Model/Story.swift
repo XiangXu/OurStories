@@ -226,8 +226,9 @@ struct Story
                   coordinate: CLLocationCoordinate2D(latitude: 48.810719, longitude: 14.315020)),
 
             Story(location: "意大利-米兰",
-                  storyContent: "测试段落测试段落测试段落测试段落测试段落测试段落测试段落",
-                  imageName: "ireland-maynooth",
+                  date: StoryDate(year: 2017, month: 6),
+                  storyContent: "米兰大教堂",
+                  imageName: "italy-milan",
                   coordinate: CLLocationCoordinate2D(latitude: 45.464203, longitude: 9.189982)),
             
             Story(location: "意大利-五渔村",
