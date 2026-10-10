@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
+class MapViewController: UIViewController, MKMapViewDelegate
 {
     let stories = Story.storyGenerate()
     

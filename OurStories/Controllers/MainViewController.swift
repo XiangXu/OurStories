@@ -7,66 +7,38 @@
 //
 
 import UIKit
-import Koloda
-import PopupDialog
 import MessageUI
 
-class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, MFMailComposeViewControllerDelegate
+class MainViewController: UIViewController, CardDeckViewDataSource, CardDeckViewDelegate, MFMailComposeViewControllerDelegate
 {
     let stories = Story.storyGenerate()
     
-    private var kolodaView: KolodaView = {
-        let kolodaView = KolodaView()
+    private var kolodaView: CardDeckView = {
+        let kolodaView = CardDeckView()
         return kolodaView
     }()
     
-    lazy var previousButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "smile")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 35
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.layer.borderWidth = 1.5
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(hanldePreviousCard), for: .touchUpInside)
-        return button
-    }()
+    lazy var previousButton = makeRoundButton(imageName: "smile", action: #selector(hanldePreviousCard))
     
-    lazy var nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 35
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.layer.borderWidth = 1.5
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(hanldeNextCard), for: .touchUpInside)
-        return button
-    }()
+    lazy var nextButton = makeRoundButton(imageName: "heart", action: #selector(hanldeNextCard))
     
-    lazy var resettButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "vibe")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 35
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.layer.borderWidth = 1.5
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(handleResetCard), for: .touchUpInside)
+    lazy var resettButton = makeRoundButton(imageName: "vibe", action: #selector(handleResetCard))
+    
+    private func makeRoundButton(imageName: String, action: Selector) -> UIButton
+    {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
+        configuration.background.backgroundColor = .white
+        configuration.background.cornerRadius = 35
+        configuration.background.strokeColor = .gray
+        configuration.background.strokeWidth = 1.5
+        configuration.cornerStyle = .fixed
+        
+        let button = UIButton(configuration: configuration)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.accessibilityIdentifier = imageName
         return button
-    }()
+    }
     
     @objc func hanldePreviousCard()
     {
@@ -90,6 +62,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.view.backgroundColor = .white
         self.navigationItem.title = "我们的故事"
@@ -106,7 +79,7 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         kolodaView.delegate = self
         
         view.addSubview(kolodaView)
-        kolodaView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor,
+        kolodaView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor,
                           paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8,
                           width: 0, height:500)
         kolodaView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -124,43 +97,36 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                          paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
                          width: 300, height: 70)
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        kolodaView.reloadData()
     }
     
-    func kolodaNumberOfCards(_ koloda: KolodaView) -> Int
+    func numberOfCards(in cardDeck: CardDeckView) -> Int
     {
-        return stories.count;
+        return stories.count
     }
     
-    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView
+    func cardDeck(_ cardDeck: CardDeckView, viewForCardAt index: Int) -> UIView
     {
         let cardView = CardView()
         cardView.story = stories[index]
-        
-        if index == 0{
-            cardView.contentTextField.typeOn(string: stories[index].storyContent)
-        }
         return cardView
     }
     
-    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+    func cardDeckDidRunOutOfCards(_ cardDeck: CardDeckView) {
         let title = "测试段落？"
         let message = "测试段落测试段落测试段落测试段落测试段落测试段落"
-        let image = UIImage(named: "heart")
-        let popup = PopupDialog(title: title, message: message, image: image)
-        let yesButton = DefaultButton(title: "I say yes", dismissOnTap: true) {
+        let popup = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        popup.addAction(UIAlertAction(title: "I say yes", style: .default) { _ in
             self.sendEmail()
-            self.kolodaView.resetCurrentCardIndex()
-        }
-        popup.addButtons([yesButton])
+        })
         self.present(popup, animated: true, completion: nil)
     }
     
-    func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
-        if index != 0{
-            let cardView = koloda.viewForCard(at: index) as! CardView
-            cardView.contentTextField.resetTypeOn()
-            cardView.contentTextField.typeOn(string: stories[index].storyContent)
-        }
+    func cardDeck(_ cardDeck: CardDeckView, didShowCardAt index: Int) {
+        guard let cardView = cardDeck.topCard as? CardView else { return }
+        cardView.contentTextField.resetTypeOn()
+        cardView.contentTextField.typeOn(string: stories[index].storyContent)
     }
     
     func sendEmail() {
@@ -174,11 +140,12 @@ class MainViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
             present(mail, animated: true)
         } else {
             print("Cannot send email")
+            kolodaView.resetCurrentCardIndex()
         }
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
-         kolodaView.resetCurrentCardIndex()
+        kolodaView.resetCurrentCardIndex()
     }
 }
