@@ -15,6 +15,7 @@ class CardView: UIView
             guard let story = story else { return }
             imageView.image = UIImage(named: story.imageName)
             locationLabel.text = story.location
+            dateText = story.date?.displayText
         }
     }
 
@@ -27,6 +28,19 @@ class CardView: UIView
             ]))
             pageBadge.configuration = configuration
             pageBadge.isHidden = pageText == nil
+        }
+    }
+
+    /// Shown in the bottom corner of the photo, like the date stamp on a print; hidden for undated stories.
+    private var dateText: String? {
+        didSet{
+            var configuration = dateBadge.configuration
+            configuration?.attributedTitle = AttributedString(dateText ?? "", attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 13, weight: .semibold),
+                .kern: 0.6
+            ]))
+            dateBadge.configuration = configuration
+            dateBadge.isHidden = dateText == nil
         }
     }
 
@@ -47,6 +61,23 @@ class CardView: UIView
         let badge = UIButton(configuration: configuration)
         badge.isUserInteractionEnabled = false
         badge.isHidden = true
+        return badge
+    }()
+
+    let dateBadge: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "calendar",
+                                      withConfiguration: UIImage.SymbolConfiguration(pointSize: 11, weight: .semibold))
+        configuration.imagePadding = 6
+        configuration.baseForegroundColor = .white
+        configuration.background.backgroundColor = .clear
+        configuration.background.customView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
+        configuration.cornerStyle = .capsule
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 11, bottom: 6, trailing: 12)
+        let badge = UIButton(configuration: configuration)
+        badge.isUserInteractionEnabled = false
+        badge.isHidden = true
+        badge.accessibilityIdentifier = "date"
         return badge
     }()
 
@@ -114,6 +145,11 @@ class CardView: UIView
         contentView.addSubview(pageBadge)
         pageBadge.anchor(top: contentView.topAnchor, left: nil, bottom: nil, right: contentView.rightAnchor,
                          paddingTop: 14, paddingLeft: 0, paddingBottom: 0, paddingRight: 14,
+                         width: 0, height: 0)
+
+        contentView.addSubview(dateBadge)
+        dateBadge.anchor(top: nil, left: contentView.leftAnchor, bottom: imageView.bottomAnchor, right: nil,
+                         paddingTop: 0, paddingLeft: 14, paddingBottom: 14, paddingRight: 0,
                          width: 0, height: 0)
 
         contentView.addSubview(locationIcon)

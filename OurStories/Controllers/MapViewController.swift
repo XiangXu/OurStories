@@ -41,7 +41,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     {
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         for story in stories {
-            mapView.addAnnotation(VisitPlace(title: story.location, coordinate: story.coordinate))
+            mapView.addAnnotation(VisitPlace(title: story.location, subtitle: story.date?.displayText, coordinate: story.coordinate))
         }
     }
     

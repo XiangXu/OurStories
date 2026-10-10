@@ -35,6 +35,45 @@ class OurStoriesTests: XCTestCase {
         }
     }
 
+    func testStoryDateDisplayText() {
+        XCTAssertEqual(StoryDate(year: 2012, month: 7).displayText, "2012年7月")
+        XCTAssertEqual(StoryDate(year: 2021, month: 7, day: 7).displayText, "2021年7月7日")
+    }
+
+    func testEveryStoryDateIsValid() {
+        for story in Story.storyGenerate() {
+            guard let date = story.date else { continue }
+            XCTAssertTrue((1...12).contains(date.month), "Invalid month for \(story.location)")
+            if let day = date.day {
+                XCTAssertTrue((1...31).contains(day), "Invalid day for \(story.location)")
+            }
+        }
+    }
+
+    func testDatedStoriesAreInChronologicalOrder() {
+        let months = Story.storyGenerate().compactMap { $0.date }.map { $0.year * 12 + $0.month }
+        XCTAssertEqual(months, months.sorted())
+    }
+
+    // The date lives in `Story.date`; the text should not repeat it.
+    func testStoryTextDoesNotStartWithDate() {
+        for story in Story.storyGenerate() {
+            XCTAssertNil(story.storyContent.range(of: "^\\d{4}年", options: .regularExpression),
+                         "Move the date of \(story.location) into `date`")
+        }
+    }
+
+    func testCardShowsDateOnlyForDatedStories() {
+        let coordinate = CLLocationCoordinate2D(latitude: 53.38, longitude: -6.59)
+        let card = CardView()
+        card.story = Story(location: "爱尔兰-梅努斯", date: StoryDate(year: 2012, month: 7), storyContent: "故事", imageName: "1.png", coordinate: coordinate)
+        XCTAssertFalse(card.dateBadge.isHidden)
+        XCTAssertEqual(card.dateBadge.configuration?.title, "2012年7月")
+
+        card.story = Story(location: "爱尔兰-梅努斯", storyContent: "故事", imageName: "1.png", coordinate: coordinate)
+        XCTAssertTrue(card.dateBadge.isHidden)
+    }
+
     func testTypeOnTypesOneCharacterPerTick() {
         XCTAssertEqual(TypeOnTextView.typeOnSteps(for: "我们的"), ["我", "们", "的"])
         XCTAssertEqual(TypeOnTextView.typeOnSteps(for: ""), [])
