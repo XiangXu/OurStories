@@ -10,6 +10,7 @@ map of everywhere those stories happened.
   <img src="docs/stories.png" width="240" alt="Story cards">
   <img src="docs/stories-dark.png" width="240" alt="Story cards in dark mode">
   <img src="docs/map.png" width="240" alt="Map of stories">
+  <img src="docs/map-card.png" width="240" alt="A story selected on the map">
 </p>
 
 ## Features
@@ -19,9 +20,12 @@ map of everywhere those stories happened.
   starts again from the first.
 - **Typewriter text** – each story is typed out character by character when its
   card comes to the front.
-- **Our footprints (我们的足迹)** – the globe button opens a map with a heart
-  marker for every story. It opens on the area where most stories are; pan and
-  zoom to find the rest.
+- **Our footprints (我们的足迹)** – the globe button opens a map that shows
+  each story as its photo. Nearby stories are grouped into one photo with a
+  count; tap it to zoom in and spread them out. Tap a photo and its story slides
+  up as a card at the bottom of the map; stories from the very same spot share a
+  row of cards to swipe through. The map opens on the area where most stories
+  are; pan and zoom to find the rest.
 - **Background music** – a looping track starts with the app; the music button in
   the top left pauses and resumes it.
 - **Light and dark mode** – a warm rose-and-cream palette with a dark variant.
@@ -68,27 +72,36 @@ The app uses no permission-protected features, so no privacy prompts appear.
 
 ## Adding or editing a story
 
-All content lives in one place: the array returned by `Story.storyGenerate()` in
-`OurStories/Model/Story.swift`. Cards appear in array order, and the map gets its
-markers from the same array.
+All content lives in one place: `OurStories/Resources/stories.json`, a list with
+one entry per story. Cards appear in list order, and the map gets its markers
+from the same list.
 
-```swift
-Story(location: "爱尔兰-梅努斯",
-      storyContent: "2012年7月 我们第一次相遇在梅努斯这个小镇 ...",
-      imageName: "1.png",
-      coordinate: CLLocationCoordinate2D(latitude: 53.381210, longitude: -6.592220)),
+```json
+{
+  "location": "爱尔兰-梅努斯",
+  "date": { "year": 2012, "month": 7 },
+  "text": "我们第一次相遇在梅努斯这个小镇 ...",
+  "image": "ireland-maynooth",
+  "latitude": 53.38121,
+  "longitude": -6.59222
+}
 ```
 
-- `imageName` is `"N.png"`, which refers to the image set named `N` in
-  `Assets.xcassets`. To add a photo, create a new image set with the next number
+- `date` is shown as a badge on the photo (`2012年7月`) and under the place name on
+  the map. Add `"day"` when the exact day matters (`2021年7月7日`), or leave `date`
+  out and the badge is hidden. Keep the date out of `text`.
+- `image` is the name of an image set in `Assets.xcassets`. Image sets are
+  named after the place, `country-place` in lowercase English
+  (`ireland-maynooth`), with the year added when a place comes back
+  (`france-paris-2023`). To add a photo, create a new image set named that way
   and drop the picture in.
-- In `storyContent`, a `$` is never shown: it makes the typewriter pause for one
+- In `text`, a `$` is never shown: it makes the typewriter pause for one
   beat. Use several for a longer pause.
-- Several later stories still use placeholder text (`测试段落…`) and reuse the
-  first photos; they are waiting for their real words and pictures.
+- Two stories (Eindhoven and Spiez) have no photo of their own yet and reuse
+  the first photos; one is also still waiting for its date.
 
-The unit tests check that every story has text, a valid coordinate and an image
-that exists, so run them after editing.
+The unit tests check that the file decodes and that every story has text, a
+valid coordinate and an image that exists, so run them after editing.
 
 ## Project structure
 
@@ -97,14 +110,18 @@ OurStories/
   AppDelegate.swift, SceneDelegate.swift   app start-up, builds the window in code
   Controllers/
     MainViewController.swift               story deck, buttons, music toggle
-    MapViewController.swift                map with one marker per story
+    MapViewController.swift                map with one photo per story
   View/
     CardDeckView.swift                     swipeable card stack
     CardView.swift                         one story card
+    PhotoAnnotationView.swift              story photo shown on the map
+    StoryMapCardView.swift                 story card at the bottom of the map
   Model/
-    Story.swift                            all the stories
+    Story.swift                            one story and its date
+    StoryStore.swift                       loads stories.json
     VisitPlace.swift                       map annotation
   Utils/                                   colours, layout helper, typewriter text view, music
+  Resources/stories.json                   all the stories
   Resources/jay.mp3                        background music
   Assets.xcassets                          photos and app icon
 OurStoriesTests/                           unit tests (stories, typewriter, deck)
@@ -134,7 +151,8 @@ example by exporting it from Preview with *Alpha* unticked).
 - **Unit tests** – story data, the typewriter's `$` pause and space handling, and
   the card deck's next / previous / start-over logic.
 - **UI tests** – launch the app, move through cards with the buttons and a swipe,
-  open the map, and check that the deck starts over after the last story.
+  open the map and a story on it, and check that the deck starts over after the
+  last story.
 
 ## History
 

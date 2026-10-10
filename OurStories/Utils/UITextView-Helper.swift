@@ -55,7 +55,7 @@ class TypeOnTextView: UITextView {
         var stepIndex = 0
         guard typeTimer == nil, !steps.isEmpty else { return }
         
-        typeTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true) { [weak self] timer in
+        typeTimer = Timer.scheduledTimer(withTimeInterval: 0.08, repeats: true) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return

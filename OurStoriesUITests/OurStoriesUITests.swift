@@ -45,6 +45,20 @@ class OurStoriesUITests: XCTestCase {
         XCTAssertTrue(app.maps.firstMatch.exists)
         sleep(4)
         attachScreenshot(named: "6-map")
+
+        // Selecting a story on the map brings up its card, and closing the card puts it away.
+        // Barcelona stands on its own when the map opens; a pin inside a group would zoom in instead.
+        let pin = app.otherElements.matching(identifier: "storyPin")
+            .matching(NSPredicate(format: "label BEGINSWITH '西班牙-巴塞罗那'")).firstMatch
+        XCTAssertTrue(pin.waitForExistence(timeout: 5))
+        pin.tap()
+        let card = app.otherElements["storyCard"]
+        XCTAssertTrue(card.waitForExistence(timeout: 5))
+        sleep(1)
+        attachScreenshot(named: "7-map-story-card")
+
+        app.buttons["closeStoryCard"].tap()
+        XCTAssertTrue(card.waitForNonExistence(timeout: 5))
     }
 
     func testEndOfDeckStartsOver() {
